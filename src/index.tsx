@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 // ルーティング
 import Root from './Pages/Root';
 import NotFound from './Pages/NotFound';
+import Demo from './Pages/Demo';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,6 +17,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Root />} />
+        <Route path="/demo" element={<Demo />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

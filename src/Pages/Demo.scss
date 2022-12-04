@@ -1,0 +1,18 @@
+
+#Demo {
+  margin: 50px auto;
+  padding: 1rem;
+  max-width: 1000px;
+  #DemoHeader {
+    #DemoAlgorithmSelectBox {
+      .prompt_text {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      .sorting_algorithm_select_element {
+        padding: 0.3rem 0.5rem;
+        cursor: pointer;
+      }
+    }
+  }
+}
