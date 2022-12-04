@@ -1,17 +1,25 @@
 import React from 'react';
+import Select from 'react-select';
 
 import { marked } from 'marked';
 
+import './Description.scss';
+
+import { sort_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 import { HttpClient } from '../Common/HttpClient';
 
 type Props = {
   description: string;
+  sorting_algorithm: SortAlgorithmType[];
+  selected_sorting_algorithm: SortAlgorithmType;
 }
 
 class Description extends React.Component {
 
   state: Props = {
-    description: ''
+    description: '',
+    sorting_algorithm: sort_algorithms,
+    selected_sorting_algorithm: sort_algorithms[0],
   }
 
   constructor(props: any) {
@@ -22,10 +30,28 @@ class Description extends React.Component {
     });
   }
 
+  select_changed = (selected_option: any) => {
+    const label = selected_option.label.replace(/ /g, '_');
+    HttpClient.Get(`./docs/${label}.md`)
+    .then((response) => {
+      const description = marked.parse(response);
+      this.setState({
+        description: description,
+        selected_sorting_algorithm: selected_option,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
   render() {
     return (
       <div id="Description">
-        <div dangerouslySetInnerHTML={{__html: this.state.description}}></div>
+        <div>
+          <Select options={sort_algorithms} placeholder="SELECT SORTING ALGORITHM" value={this.state.selected_sorting_algorithm} onChange={this.select_changed} />
+        </div>
+        <div dangerouslySetInnerHTML={{__html: this.state.description}} className="markdown"></div>
       </div>
     );
   }
