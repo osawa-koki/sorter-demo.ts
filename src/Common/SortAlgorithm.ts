@@ -7,7 +7,7 @@ type SortAlgorithmType = {
   description_ja: string;
 };
 
-const sort_algorithms: SortAlgorithmType[] = [
+const sorting_algorithms: SortAlgorithmType[] = [
   {
     value: 0,
     label: "Bubble Sort",
@@ -164,4 +164,4 @@ const sort_algorithms: SortAlgorithmType[] = [
   } as SortAlgorithmType,
 ];
 
-export { sort_algorithms };  export type { SortAlgorithmType };
+export { sorting_algorithms };  export type { SortAlgorithmType };

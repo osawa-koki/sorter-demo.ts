@@ -5,7 +5,7 @@ import { marked } from 'marked';
 
 import './Description.scss';
 
-import { sort_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
+import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 import { HttpClient } from '../Common/HttpClient';
 
 type Props = {
@@ -20,7 +20,7 @@ const readme_added_sort_algorithms = [{
   label_ja: "",
   description: "",
   description_ja: "",
-} as SortAlgorithmType, ...sort_algorithms]
+} as SortAlgorithmType, ...sorting_algorithms]
 
 class Description extends React.Component {
 

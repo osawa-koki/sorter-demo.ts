@@ -2,7 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 
 import './Demo.scss';
-import { sort_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
+import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 
 type Props = {
   sorting_algorithm: SortAlgorithmType[];
@@ -12,8 +12,8 @@ type Props = {
 class Demo extends React.Component {
 
   state: Props = {
-    sorting_algorithm: sort_algorithms,
-    selected_sorting_algorithm: sort_algorithms[0],
+    sorting_algorithm: sorting_algorithms,
+    selected_sorting_algorithm: sorting_algorithms[0],
   }
 
   select_changed = (selected_option: any) => {
@@ -25,7 +25,7 @@ class Demo extends React.Component {
       <div id="Demo">
         <div id="DemoHeader">
           <div id="DemoAlgorithmSelectBox">
-            <Select options={sort_algorithms} placeholder="SELECT SORTING ALGORITHM" value={this.state.selected_sorting_algorithm} onChange={this.select_changed} />
+            <Select options={this.state.sorting_algorithm} placeholder="SELECT SORTING ALGORITHM" value={this.state.selected_sorting_algorithm} onChange={this.select_changed} />
           </div>
           <div id="DemoAlgorithmInfoBox">
             <table>
