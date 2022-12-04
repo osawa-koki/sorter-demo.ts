@@ -2,7 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 
 import './Demo.scss';
-import { sort_algorithms, SortAlgorithmType, sortin_algorithms_for_visualization } from '../Common/SortAlgorithm';
+import { sort_algorithms, SortAlgorithmType, sorting_algorithms_for_visualization } from '../Common/SortAlgorithm';
 
 type Props = {
   sorting_algorithm: SortAlgorithmType[];
@@ -19,7 +19,7 @@ class Demo extends React.Component {
       <div id="Demo">
         <div id="DemoHeader">
           <div id="DemoAlgorithmSelectBox">
-            <Select options={sortin_algorithms_for_visualization} placeholder="SELECT SORTING ALGORITHM" />
+            <Select options={sorting_algorithms_for_visualization} placeholder="SELECT SORTING ALGORITHM" />
           </div>
         </div>
         <div id="DemoBody"></div>
