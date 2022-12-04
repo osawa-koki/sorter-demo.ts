@@ -9,7 +9,7 @@ class Description extends React.Component {
 
   constructor(props: any) {
     super(props);
-    HttpClient.Get("./description.md").then((response) => {
+    HttpClient.Get("./docs/description.md").then((response) => {
       const description = marked.parse(response);
       console.log(description);
     });
