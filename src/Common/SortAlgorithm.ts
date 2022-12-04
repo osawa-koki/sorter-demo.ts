@@ -164,4 +164,18 @@ const sort_algorithms: SortAlgorithmType[] = [
   } as SortAlgorithmType,
 ];
 
-export { sort_algorithms };  export type { SortAlgorithmType };
+type sortin_algorithms_for_visualization_type = {
+  label: string;
+  value: number;
+};
+
+const sortin_algorithms_for_visualization = sort_algorithms.map(
+  (sort_algorithm) => {
+    return {
+      label: sort_algorithm.name,
+      value: sort_algorithm.id,
+    } as sortin_algorithms_for_visualization_type;
+  }
+);
+
+export { sort_algorithms, sortin_algorithms_for_visualization };  export type { SortAlgorithmType };
