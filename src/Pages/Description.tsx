@@ -1,24 +1,31 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import { marked } from 'marked';
 
 import { HttpClient } from '../Common/HttpClient';
 
+type Props = {
+  description: string;
+}
+
 class Description extends React.Component {
+
+  state: Props = {
+    description: ''
+  }
 
   constructor(props: any) {
     super(props);
     HttpClient.Get("./docs/description.md").then((response) => {
       const description = marked.parse(response);
-      console.log(description);
+      this.setState({ description: description });
     });
   }
 
   render() {
     return (
       <div id="Description">
-        説明
+        <div dangerouslySetInnerHTML={{__html: this.state.description}}></div>
       </div>
     );
   }
