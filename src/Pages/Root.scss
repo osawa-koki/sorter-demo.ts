@@ -1,0 +1,19 @@
+
+#Root {
+  .RootImg {
+    display: flex;
+    margin: 50px auto;
+    max-width: 1200px;
+    img {
+      display: block;
+      width: 150px;
+      aspect-ratio: 1 / 1;
+      border: 1px gray solid;
+      transition: all 1s;
+      &:hover {
+        border: 1px solid solid;
+        transform: scale(1.05);
+      }
+    }
+  }
+}
