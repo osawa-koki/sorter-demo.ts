@@ -63,6 +63,9 @@ class Demo extends React.Component {
       case "Selection Sort":
         this.SelectionSort();
         break;
+      case "Insertion Sort":
+        this.InsertionSort();
+        break;
       default:
         break;
     }
@@ -80,6 +83,21 @@ class Demo extends React.Component {
       }
     }
   }
+
+  async InsertionSort() {
+    const sticks = this.state.sticks;
+    for (let i = 1; i < sticks.length; i++) {
+      const v = sticks[i];
+      let j = i - 1;
+      while (j >= 0 && sticks[j] > v) {
+        sticks[j + 1] = sticks[j];
+        j--;
+        await new Promise(resolve => setTimeout(resolve, 3));
+        this.setState({ sticks: sticks });
+      }
+      sticks[j + 1] = v;
+    }
+  };
 
   async SelectionSort() {
     const sticks = this.state.sticks;
