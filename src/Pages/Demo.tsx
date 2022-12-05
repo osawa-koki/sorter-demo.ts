@@ -84,6 +84,9 @@ class Demo extends React.Component {
       case "Bucket Sort":
         this.BucketSort();
         break;
+      case "Shell Sort":
+        this.ShellSort();
+        break;
       default:
         break;
     }
@@ -336,6 +339,29 @@ class Demo extends React.Component {
       return array;
     };
     this.setState({ sticks: await bucketSort(sticks) });
+  };
+
+  async ShellSort() {
+    const sticks = this.state.sticks;
+    const shellSort = async (array: number[]) => {
+      let gap = Math.floor(array.length / 2);
+      while (gap > 0) {
+        for (let i = gap; i < array.length; i++) {
+          let j = i;
+          const temp = array[i];
+          while (j >= gap && array[j - gap] > temp) {
+            array[j] = array[j - gap];
+            j -= gap;
+            await new Promise(resolve => setTimeout(resolve, 3));
+            this.setState({ sticks: array });
+          }
+          array[j] = temp;
+        }
+        gap = Math.floor(gap / 2);
+      }
+      return array;
+    };
+    this.setState({ sticks: await shellSort(sticks) });
   };
 
   componentDidMount() {
