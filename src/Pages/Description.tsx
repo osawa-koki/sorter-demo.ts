@@ -57,7 +57,11 @@ class Description extends React.Component {
       });
     })
     .catch((error) => {
-      console.log(error);
+      const text  = "<h1>Fetch Failed...</h1><p>ページのロードに失敗しました。<br />通信環境が悪いか、ページが用意されていない可能性があります。</p>";
+      this.setState({
+        description: text,
+        selected_sorting_algorithm: target_option,
+      });
     });
   }
 
