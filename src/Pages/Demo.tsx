@@ -34,13 +34,14 @@ class Demo extends React.Component {
   };
 
   update_stick_count = (operant: number) => {
+    const new_stick_count = this.state.stick_count + operant;
     const sticks = [];
-    for (let i = 1; i <= this.state.stick_count + operant; i++) {
+    for (let i = 1; i <= new_stick_count; i++) {
       sticks.push(i);
     }
     this.setState({
       sticks: sticks,
-      stick_count: this.state.stick_count + operant,
+      stick_count: new_stick_count,
     });
   };
 
