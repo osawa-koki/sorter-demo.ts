@@ -55,7 +55,26 @@ class Demo extends React.Component {
   };
 
   Sort() {
+    const sort_algorithm = this.state.selected_sorting_algorithm;
+    switch (sort_algorithm.label) {
+      case "Bubble Sort":
+        this.BubbleSort();
+        break;
+      default:
+        break;
+    }
+  }
 
+  BubbleSort() {
+    const sticks = this.state.sticks;
+    for (let i = 0; i < sticks.length - 1; i++) {
+      for (let j = sticks.length - 1; i < j; j--) {
+        if (sticks[j] < sticks[j - 1]) {
+          [sticks[j], sticks[j - 1]] = [sticks[j - 1], sticks[j]];
+        }
+      }
+    }
+    this.setState({ sticks: sticks });
   }
 
   componentDidMount() {
@@ -104,7 +123,7 @@ class Demo extends React.Component {
           <div id="DemoBody">
             <div id="DemoBodyButtons">
               <Button variant="outline-success" onClick={this.Shuffle}>シャッフル♪</Button>
-              <Button variant="outline-primary" onClick={this.Sort}>ソート開始♪</Button>
+              <Button variant="outline-primary" onClick={() => {this.Sort()}}>ソート開始♪</Button>
             </div>
             <div id="DemoCanvas">
               {
