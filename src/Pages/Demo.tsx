@@ -129,6 +129,9 @@ class Demo extends React.Component {
       case "Sleep Sort":
         this.SleepSort();
         break;
+      case "Strand Sort":
+        this.StrandSort();
+        break;
       default:
         break;
     }
@@ -683,6 +686,29 @@ class Demo extends React.Component {
       return sorted;
     };
     this.setState({ sticks: await sleepSort(sticks) });
+  };
+
+  async StrandSort() {
+    const sticks = this.state.sticks;
+    const strandSort = async (array: number[]) => {
+      const sorted: number[] = [];
+      while (array.length > 0) {
+        let min = array[0];
+        let minIndex = 0;
+        for (let i = 1; i < array.length; i++) {
+          if (array[i] < min) {
+            min = array[i];
+            minIndex = i;
+          }
+        }
+        sorted.push(min);
+        array.splice(minIndex, 1);
+        await new Promise(resolve => setTimeout(resolve, 3));
+        this.setState({ sticks: sorted });
+      }
+      return sorted;
+    };
+    this.setState({ sticks: await strandSort(sticks) });
   };
 
   componentDidMount() {
