@@ -14,11 +14,11 @@ class Demo extends React.Component {
   state: Props = {
     sorting_algorithm: sorting_algorithms,
     selected_sorting_algorithm: sorting_algorithms[0],
-  }
+  };
 
   select_changed = (selected_option: any) => {
     this.setState({ selected_sorting_algorithm: selected_option });
-  }
+  };
 
   render() {
     return (
@@ -53,7 +53,7 @@ class Demo extends React.Component {
         <div id="DemoBody"></div>
       </div>
     );
-  }
+  };
 }
 
 export default Demo;
