@@ -93,6 +93,9 @@ class Demo extends React.Component {
       case "Cycle Sort":
         this.CycleSort();
         break;
+      case "Pancake Sort":
+        this.PancakeSort();
+        break;
       default:
         break;
     }
@@ -435,6 +438,36 @@ class Demo extends React.Component {
       return array;
     };
     this.setState({ sticks: await cycleSort(sticks) });
+  };
+
+  async PancakeSort() {
+    const sticks = this.state.sticks;
+    const pancakeSort = async (array: number[]) => {
+      for (let i = array.length - 1; i >= 1; i--) {
+        let maxIndex = 0;
+        for (let j = 0; j <= i; j++) {
+          if (array[j] > array[maxIndex]) {
+            maxIndex = j;
+          }
+        }
+        if (maxIndex !== i) {
+          await flip(array, maxIndex);
+          await flip(array, i);
+        }
+      }
+      return array;
+    };
+    const flip = async (array: number[], k: number) => {
+      let i = 0;
+      while (i < k) {
+        [array[i], array[k]] = [array[k], array[i]];
+        i++;
+        k--;
+        await new Promise(resolve => setTimeout(resolve, 3));
+        this.setState({ sticks: array });
+      }
+    };
+    this.setState({ sticks: await pancakeSort(sticks) });
   };
 
   componentDidMount() {
