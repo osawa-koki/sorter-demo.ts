@@ -87,6 +87,9 @@ class Demo extends React.Component {
       case "Shell Sort":
         this.ShellSort();
         break;
+      case "Comb Sort":
+        this.CombSort();
+        break;
       default:
         break;
     }
@@ -362,6 +365,33 @@ class Demo extends React.Component {
       return array;
     };
     this.setState({ sticks: await shellSort(sticks) });
+  };
+
+  async CombSort() {
+    const sticks = this.state.sticks;
+    const combSort = async (array: number[]) => {
+      let gap = array.length;
+      const shrink = 1.3;
+      let swapped = true;
+      while (gap > 1 || swapped) {
+        if (gap > 1) {
+          gap = Math.floor(gap / shrink);
+        }
+        let i = 0;
+        swapped = false;
+        while (i + gap < array.length) {
+          if (array[i] > array[i + gap]) {
+            [array[i], array[i + gap]] = [array[i + gap], array[i]];
+            swapped = true;
+            await new Promise(resolve => setTimeout(resolve, 3));
+            this.setState({ sticks: array });
+          }
+          i++;
+        }
+      }
+      return array;
+    };
+    this.setState({ sticks: await combSort(sticks) });
   };
 
   componentDidMount() {
