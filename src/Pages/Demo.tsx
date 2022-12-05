@@ -558,9 +558,9 @@ class Demo extends React.Component {
   };
 
   async StoogeSort() {
-    if (this.state.is_resetting) return; // 中断用
     const sticks = this.state.sticks;
     const stoogeSort = async (array: number[], i = 0, j = array.length - 1) => {
+      if (this.state.is_resetting) return array; // 中断用
       if (array[i] > array[j]) {
         [array[i], array[j]] = [array[j], array[i]];
         await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
@@ -620,7 +620,7 @@ class Demo extends React.Component {
       let i = 0;
       for (let count = 0; count < size; count++) {
         while (holes[count]-- > 0) {
-          if (this.state.is_resetting) return; // 中断用
+          if (this.state.is_resetting) return array; // 中断用
           array[i++] = count + min;
           await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
           this.setState({ sticks: array });
