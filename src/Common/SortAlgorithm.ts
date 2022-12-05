@@ -1,5 +1,6 @@
 
 type SortAlgorithmType = {
+  is_valid: boolean;
   value: number;
   label: string;
   label_ja: string;
@@ -7,8 +8,9 @@ type SortAlgorithmType = {
   description_ja: string;
 };
 
-const sorting_algorithms: SortAlgorithmType[] = [
+const sorting_algorithms_raw: SortAlgorithmType[] = [
   {
+    is_valid: true,
     value: 0,
     label: "Bubble Sort",
     label_ja: "バブルソート",
@@ -16,6 +18,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "バブルソートは、隣り合う要素を比較し、順序が逆であれば交換することを繰り返す単純なソートアルゴリズムです。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 1,
     label: "Selection Sort",
     label_ja: "選択ソート",
@@ -23,6 +26,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "選択ソートは、比較ソートの一種で、与えられたリストから最小の要素を探し、それをリストの先頭にある要素と交換することを繰り返すソートアルゴリズムです。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 2,
     label: "Insertion Sort",
     label_ja: "挿入ソート",
@@ -30,6 +34,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "挿入ソートは、整列済みの部分列と整列されていない部分列に分けて、整列されていない部分列の要素を整列済みの部分列に挿入することを繰り返すソートアルゴリズムです。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 3,
     label: "Merge Sort",
     label_ja: "マージソート",
@@ -37,6 +42,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "マージソートは、比較ソートの一種で、分割統治法を用いて実装されています。マージソートは、安定ソートであり、同じ値の要素の順序がソート前後で保たれます。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 4,
     label: "Quick Sort",
     label_ja: "クイックソート",
@@ -44,6 +50,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "クイックソートは、分割統治法を用いて実装されているソートアルゴリズムです。クイックソートは、安定ソートではありません。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 5,
     label: "Heap Sort",
     label_ja: "ヒープソート",
@@ -51,6 +58,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "ヒープソートは、比較ソートの一種で、分割統治法を用いて実装されています。ヒープソートは、安定ソートではありません。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 6,
     label: "Counting Sort",
     label_ja: "カウントソート",
@@ -58,6 +66,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "カウントソートは、整数のみを対象とするソートアルゴリズムです。カウントソートは、安定ソートであり、同じ値の要素の順序がソート前後で保たれます。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 7,
     label: "Radix Sort",
     label_ja: "基数ソート",
@@ -65,6 +74,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "基数ソートは、整数のみを対象とするソートアルゴリズムです。基数ソートは、安定ソートであり、同じ値の要素の順序がソート前後で保たれます。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 8,
     label: "Bucket Sort",
     label_ja: "バケットソート",
@@ -72,6 +82,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "バケットソートは、整数のみを対象とするソートアルゴリズムです。バケットソートは、安定ソートであり、同じ値の要素の順序がソート前後で保たれます。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 9,
     label: "Shell Sort",
     label_ja: "シェルソート",
@@ -79,6 +90,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "シェルソートは、比較ソートの一種で、挿入ソートを改良したものです。シェルソートは、安定ソートであり、同じ値の要素の順序がソート前後で保たれます。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 10,
     label: "Comb Sort",
     label_ja: "コムソート",
@@ -86,6 +98,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "コムソートは、比較ソートの一種で、バブルソートを改良したものです。コムソートは、安定ソートであり、同じ値の要素の順序がソート前後で保たれます。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 11,
     label: "Cycle Sort",
     label_ja: "サイクルソート",
@@ -93,6 +106,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "サイクルソートは、比較ソートの一種で、安定ソートではありません。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 12,
     label: "Pancake Sort",
     label_ja: "パンケーキソート",
@@ -100,6 +114,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "パンケーキソートは、比較ソートの一種で、安定ソートではありません。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 13,
     label: "Gnome Sort",
     label_ja: "グノームソート",
@@ -107,6 +122,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "グノームソートは、比較ソートの一種で、安定ソートではありません。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 14,
     label: "Stooge Sort",
     label_ja: "ストゥージソート",
@@ -114,6 +130,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "ストゥージソートは、比較ソートの一種で、安定ソートではありません。",
   } as SortAlgorithmType,
   {
+    is_valid: false,
     value: 15,
     label: "Bitonic Sort",
     label_ja: "ビトニックソート",
@@ -121,6 +138,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "ビトニックソートは、比較ソートの一種で、安定ソートです。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 16,
     label: "Pigeonhole Sort",
     label_ja: "パイソンホールソート",
@@ -128,6 +146,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "パイソンホールソートは、比較ソートの一種で、安定ソートです。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 17,
     label: "Odd-Even Sort",
     label_ja: "オッド・イブンソート",
@@ -135,6 +154,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "オッド・イブンソートは、比較ソートの一種で、安定ソートです。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 18,
     label: "Cocktail Sort",
     label_ja: "カクテルソート",
@@ -142,6 +162,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "カクテルソートは、比較ソートの一種で、安定ソートです。",
   } as SortAlgorithmType,
   {
+    is_valid: false,
     value: 19,
     label: "Bogo Sort",
     label_ja: "ボゴソート",
@@ -149,6 +170,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "ボゴソートは、比較ソートの一種で、安定ソートではありません。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 20,
     label: "Sleep Sort",
     label_ja: "スリープソート",
@@ -156,6 +178,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "スリープソートは、比較ソートの一種で、安定ソートではありません。",
   } as SortAlgorithmType,
   {
+    is_valid: true,
     value: 21,
     label: "Strand Sort",
     label_ja: "ストランドソート",
@@ -163,5 +186,7 @@ const sorting_algorithms: SortAlgorithmType[] = [
     description_ja: "ストランドソートは、比較ソートの一種で、安定ソートです。",
   } as SortAlgorithmType,
 ];
+
+const sorting_algorithms = sorting_algorithms_raw.filter((algorithm) => algorithm.is_valid);
 
 export { sorting_algorithms };  export type { SortAlgorithmType };
