@@ -69,7 +69,7 @@ class Demo extends React.Component {
       default:
         break;
     }
-  }
+  };
 
   async BubbleSort() {
     const sticks = this.state.sticks;
@@ -82,7 +82,7 @@ class Demo extends React.Component {
         }
       }
     }
-  }
+  };
 
   async InsertionSort() {
     const sticks = this.state.sticks;
