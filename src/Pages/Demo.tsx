@@ -488,7 +488,7 @@ class Demo extends React.Component {
         while (pos !== cycleStart) {
           pos = cycleStart;
           for (let i = cycleStart + 1; i < array.length; i++) {
-            if (this.state.is_resetting) return; // 中断用
+            if (this.state.is_resetting) return array; // 中断用
             if (array[i] < item) {
               pos++;
             }
