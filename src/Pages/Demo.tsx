@@ -111,6 +111,9 @@ class Demo extends React.Component {
       case "Odd-Even Sort":
         this.OddEvenSort();
         break;
+      case "Cocktail Sort":
+        this.CocktailSort();
+        break;
       default:
         break;
     }
@@ -601,6 +604,42 @@ class Demo extends React.Component {
       return array;
     };
     this.setState({ sticks: await oddEvenSort(sticks) });
+  };
+
+  async CocktailSort() {
+    const sticks = this.state.sticks;
+    const cocktailSort = async (array: number[]) => {
+      let swapped = true;
+      let start = 0;
+      let end = array.length;
+      while (swapped) {
+        swapped = false;
+        for (let i = start; i < end - 1; ++i) {
+          if (array[i] > array[i + 1]) {
+            [array[i], array[i + 1]] = [array[i + 1], array[i]];
+            swapped = true;
+            await new Promise(resolve => setTimeout(resolve, 3));
+            this.setState({ sticks: array });
+          }
+        }
+        if (!swapped) {
+          break;
+        }
+        swapped = false;
+        end--;
+        for (let i = end - 1; i >= start; i--) {
+          if (array[i] > array[i + 1]) {
+            [array[i], array[i + 1]] = [array[i + 1], array[i]];
+            swapped = true;
+            await new Promise(resolve => setTimeout(resolve, 3));
+            this.setState({ sticks: array });
+          }
+        }
+        start++;
+      }
+      return array;
+    };
+    this.setState({ sticks: await cocktailSort(sticks) });
   };
 
   componentDidMount() {
