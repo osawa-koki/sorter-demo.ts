@@ -8,9 +8,9 @@ function Header() {
   return (
     <div id="Header">
       <header id="Header-header">
-        <Link to="/">Home</Link>
-        <Link to="/description">Description</Link>
-        <Link to="/demo">Demo</Link>
+        <Link to="/sorter-demo.ts">Home</Link>
+        <Link to="/sorter-demo.ts/description">Description</Link>
+        <Link to="/sorter-demo.ts/demo">Demo</Link>
       </header>
     </div>
   );

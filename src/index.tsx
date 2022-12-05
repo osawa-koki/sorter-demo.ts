@@ -19,9 +19,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Root />} />
-        <Route path="/description" element={<Description />} />
-        <Route path="/demo" element={<Demo />} />
+        <Route path="/sorter-demo.ts" element={<Root />} />
+        <Route path="/sorter-demo.ts/description" element={<Description />} />
+        <Route path="/sorter-demo.ts/demo" element={<Demo />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

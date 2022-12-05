@@ -7,10 +7,10 @@ import './Root.scss';
 function Root() {
   return (
     <div id="Root">
-      <Link className='RootImg' to="/description">
+      <Link className='RootImg' to="/sorter-demo.ts/description">
         <img src={description_img} alt="description" />
       </Link>
-      <Link className='RootImg' to="/demo">
+      <Link className='RootImg' to="/sorter-demo.ts/demo">
         <img src={demo_img} alt="demo" />
       </Link>
     </div>
