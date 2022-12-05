@@ -542,7 +542,7 @@ class Demo extends React.Component {
     const gnomeSort = async (array: number[]) => {
       let i = 1;
       while (i < array.length) {
-        if (this.state.is_resetting) return; // 中断用
+        if (this.state.is_resetting) return array; // 中断用
         if (i === 0 || array[i - 1] <= array[i]) {
           i++;
         } else {
