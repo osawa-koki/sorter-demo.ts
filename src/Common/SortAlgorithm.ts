@@ -103,7 +103,7 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     label: "Cycle Sort",
     label_ja: "サイクルソート",
     description: "Cycle sort is an in-place, unstable sorting algorithm, a comparison sort that is theoretically optimal in terms of the total number of writes to the original array. It is based on the valueea that the permutation to be sorted can be factored into cycles, which can indivvalueually be rotated to give a sorted result.",
-    description_ja: "サイクルソートは、比較ソートの一種で、安定ソートではありません。",
+    description_ja: "インプレースで不安定な ソートアルゴリズムであり、他のインプレースソートアルゴリズムとは異なり、元の配列への書き込みの総数に関して理論的に最適な比較ソートです。",
   } as SortAlgorithmType,
   {
     is_valid: true,
@@ -111,7 +111,7 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     label: "Pancake Sort",
     label_ja: "パンケーキソート",
     description: "Pancake sorting is the colloquial term for the mathematical problem of sorting a disordered stack of pancakes in order of size when a spatula can be inserted at any point in the stack and used to flip all pancakes above it.",
-    description_ja: "パンケーキソートは、比較ソートの一種で、安定ソートではありません。",
+    description_ja: "ある数列を大きさ順に並べる際に先頭から何番目かまでをひっくり返す最小の手数を求める問題から考え出された整列アルゴリズムです。",
   } as SortAlgorithmType,
   {
     is_valid: true,
@@ -119,7 +119,7 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     label: "Gnome Sort",
     label_ja: "ノームソート",
     description: "Gnome sort is a sorting algorithm which is similar to insertion sort in that it works with one item at a time but gets the item to the proper place by a series of swaps, similar to a bubble sort. It is conceptually simple, requiring no nested loops.",
-    description_ja: "ノームソートは、比較ソートの一種で、安定ソートではありません。",
+    description_ja: "ノームソートはソートアルゴリズムの一種で、挿入ソートに似ているが、要素の移動は挿入ではなくバブルソートのような一連の交換で行うソート。",
   } as SortAlgorithmType,
   {
     is_valid: true,
@@ -127,7 +127,7 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     label: "Stooge Sort",
     label_ja: "ストゥージソート",
     description: "Stooge sort is a recursive sorting algorithm originally described by Joshua J. Arulanandham, Robert Endre Tarjan, and Hari B. Sivakumar in 1992. It is a simple sorting algorithm that is not suitable for practical use, but can be used for educational purposes.",
-    description_ja: "ストゥージソートは、比較ソートの一種で、安定ソートではありません。",
+    description_ja: "再帰を用いたソートアルゴリズムのひとつです。",
   } as SortAlgorithmType,
   {
     is_valid: false,
@@ -135,7 +135,7 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     label: "Bitonic Sort",
     label_ja: "ビトニックソート",
     description: "Bitonic sort is a parallel sorting algorithm for sorting a sequence of n real numbers in ascending order. It is a comparison sort like merge sort or quick sort, but it is faster than both of them. It is also a stable sort.",
-    description_ja: "ビトニックソートは、比較ソートの一種で、安定ソートです。",
+    description_ja: "主にソーティングネットワークの構築法として使用されるソートの並列アルゴリズムの１つ。",
   } as SortAlgorithmType,
   {
     is_valid: true,
@@ -143,7 +143,7 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     label: "Pigeonhole Sort",
     label_ja: "鳩の巣ソート",
     description: "Pigeonhole sort is a sorting algorithm that is suitable for sorting lists of elements where the number of elements (n) and the length of the range of possible key values (N) are approximately the same. It requires O(n + N) time.",
-    description_ja: "鳩の巣ソートは、比較ソートの一種で、安定ソートです。",
+    description_ja: "鳩の巣ソートはソートアルゴリズムの一種であり、要素数(n)とソートキーの値の個数(N)がほぼ同じ場合に適した手法である。",
   } as SortAlgorithmType,
   {
     is_valid: true,
@@ -151,7 +151,7 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     label: "Odd-Even Sort",
     label_ja: "奇偶転置ソート",
     description: "Odd–even sort, also known as brick sort, is a relatively simple sorting algorithm, developed originally for use on parallel processors with local interconnections. It is a comparison sort related to bubble sort, with which it shares many characteristics.",
-    description_ja: "奇偶転置ソートは、比較ソートの一種で、安定ソートです。",
+    description_ja: "奇偶転置ソートは、ソートのアルゴリズムの一つで、バブルソートを改良したものです。",
   } as SortAlgorithmType,
   {
     is_valid: true,
@@ -159,7 +159,7 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     label: "Cocktail Sort",
     label_ja: "カクテルソート",
     description: "Cocktail shaker sort, also known as bvalueirectional bubble sort, cocktail sort, shaker sort (which can also refer to a variant of selection sort), ripple sort, shuffle sort, or shuttle sort, is a variation of bubble sort that is both a stable sorting algorithm and a comparison sort. The algorithm differs from a bubble sort in that it sorts in both directions on each pass through the list.",
-    description_ja: "カクテルソートは、比較ソートの一種で、安定ソートです。",
+    description_ja: "カクテルソート(シェーカーソート)は、ソートのアルゴリズムの一つです。",
   } as SortAlgorithmType,
   {
     is_valid: false,
@@ -167,7 +167,7 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     label: "Bogo Sort",
     label_ja: "ボゴソート",
     description: "Bogosort, also known as permutation sort, stupvalue sort, slowsort, shotgun sort or monkey sort, is a particularly ineffective sorting algorithm based on the generate and test paradigm. The algorithm successively generates permutations of its input until it finds one that is sorted.",
-    description_ja: "ボゴソートは、比較ソートの一種で、安定ソートではありません。",
+    description_ja: "整列するまでひたすらシャッフルを繰り返すというおふざけ整列アルゴリズムです。",
   } as SortAlgorithmType,
   {
     is_valid: true,
@@ -175,7 +175,7 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     label: "Sleep Sort",
     label_ja: "スリープソート",
     description: "Sleep sort is a non-comparison sorting algorithm that is not suitable for sorting large numbers of items. It is a simple algorithm that creates a separate task for each item to be sorted, where each task sleeps for an interval corresponding to the item's sort key, then emits the item.",
-    description_ja: "スリープソートは、比較ソートの一種で、安定ソートではありません。",
+    description_ja: "対象の整数をsleepコマンドの引数として渡して、そのあと出力されるようにすれば、その出力が整列されているというおふざけアルゴリズムです。",
   } as SortAlgorithmType,
   {
     is_valid: true,
@@ -183,7 +183,7 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     label: "Strand Sort",
     label_ja: "ストランドソート",
     description: "Strand sort is a sorting algorithm that is similar to insertion sort. It is a stable sorting algorithm that is also adaptive, meaning that the algorithm takes advantage of already sorted elements in the list.",
-    description_ja: "ストランドソートは、比較ソートの一種で、安定ソートです。",
+    description_ja: "ストランドソートは、リストの項目を昇順に並べ替える再帰的な並べ替えアルゴリズムです。",
   } as SortAlgorithmType,
 ];
 
