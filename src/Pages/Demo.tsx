@@ -85,11 +85,11 @@ class Demo extends React.Component {
               </table>
             </div>
             <div id="StickCountChanger">
-              <img onClick={() => {this.update_stick_count(-10)}} src={img_10down} alt="1down" className="StickCountChangerComponents updater" />
-              <img onClick={() => {this.update_stick_count(-1)}} src={img_1down} alt="10down" className="StickCountChangerComponents updater" />
+              <img onClick={() => {this.update_stick_count(-10)}} src={img_10down} alt="1down" className={((30 <= this.state.stick_count - 10) ? "" : "disabled") + " StickCountChangerComponents updater"} />
+              <img onClick={() => {this.update_stick_count(-1)}} src={img_1down} alt="10down" className={((30 <= this.state.stick_count - 1) ? "" : "disabled") + " StickCountChangerComponents updater"} />
               <div className="StickCountChangerComponents displayer">{this.state.stick_count}回</div>
-              <img onClick={() => {this.update_stick_count(+1)}} src={img_1up} alt="1up" className="StickCountChangerComponents updater" />
-              <img onClick={() => {this.update_stick_count(+10)}} src={img_10up} alt="10up" className="StickCountChangerComponents updater" />
+              <img onClick={() => {this.update_stick_count(+1)}} src={img_1up} alt="1up" className={((this.state.stick_count + 1 <= 300) ? "" : "disabled") + " StickCountChangerComponents updater"} />
+              <img onClick={() => {this.update_stick_count(+10)}} src={img_10up} alt="10up" className={((this.state.stick_count + 10 <= 300) ? "" : "disabled") + " StickCountChangerComponents updater"} />
             </div>
           </div>
           <div id="DemoBody">
