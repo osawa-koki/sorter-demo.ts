@@ -6,9 +6,16 @@ import Header from './Header';
 import './Demo.scss';
 import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 
+import img_1up from '../Assets/1up.png';
+import img_1down from '../Assets/1down.png';
+import img_10up from '../Assets/10up.png';
+import img_10down from '../Assets/10down.png';
+
 type Props = {
   sorting_algorithm: SortAlgorithmType[];
   selected_sorting_algorithm: SortAlgorithmType;
+  stick_count: number;
+  sticks: number[];
 };
 
 class Demo extends React.Component {
@@ -16,11 +23,24 @@ class Demo extends React.Component {
   state: Props = {
     sorting_algorithm: sorting_algorithms,
     selected_sorting_algorithm: sorting_algorithms[0],
+    stick_count: 100,
+    sticks: [],
   };
 
   select_changed = (selected_option: any) => {
     this.setState({ selected_sorting_algorithm: selected_option });
   };
+
+  update_stick_count = (operant: number) => {
+    this.setState({ stick_count: this.state.stick_count + operant });
+  };
+
+  Shuffle = () => {
+  };
+
+  componentDidMount() {
+
+  }
 
   render() {
     return (
@@ -53,8 +73,20 @@ class Demo extends React.Component {
                 </tbody>
               </table>
             </div>
+            <div id="StickCountChanger">
+              <img onClick={() => {this.update_stick_count(-10)}} src={img_10down} alt="1down" className="StickCountChangerComponents updater" />
+              <img onClick={() => {this.update_stick_count(-1)}} src={img_1down} alt="10down" className="StickCountChangerComponents updater" />
+              <div className="StickCountChangerComponents displayer">{this.state.stick_count}回</div>
+              <img onClick={() => {this.update_stick_count(+1)}} src={img_1up} alt="1up" className="StickCountChangerComponents updater" />
+              <img onClick={() => {this.update_stick_count(+10)}} src={img_10up} alt="10up" className="StickCountChangerComponents updater" />
+            </div>
           </div>
-          <div id="DemoBody"></div>
+          <div id="DemoBody">
+            <div id="DemoBodyX___">
+              <button onClick={this.Shuffle}>シャッフル♪</button>
+            </div>
+            <div id="DemoCanvas"></div>
+          </div>
         </div>
       </div>
     );
