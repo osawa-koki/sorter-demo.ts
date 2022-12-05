@@ -797,7 +797,7 @@ class Demo extends React.Component {
             </div>
             <div id="IntervalTimeUpdater">
               <div>処理間隔</div>
-              <input type="range" min="1" max="30" step="1" value={this.state.interval_time} onInput={(e) => {this.setState({ interval_time:  (e.target as HTMLInputElement).value})}} />
+              <input type="range" min="1" max="30" step="1" value={this.state.interval_time} onInput={(e) => {this.setState({ interval_time:  (e.target as HTMLInputElement).value})}} disabled={this.state.is_locked} />
               <div>{this.state.interval_time} ms</div>
             </div>
           </div>
