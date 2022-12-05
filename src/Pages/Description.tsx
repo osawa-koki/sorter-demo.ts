@@ -22,7 +22,7 @@ const readme_added_sort_algorithms = [{
   description_ja: "",
 } as SortAlgorithmType, ...sorting_algorithms];
 
-const DescriptionData: Map<string, string | null> = new Map();
+const DescriptionData: Map<string, string> = new Map();
 
 class Description extends React.Component {
 
@@ -44,9 +44,7 @@ class Description extends React.Component {
     const label = target_option.label.replace(/ /g, '_');
     if (DescriptionData.has(label)) {
       const description = DescriptionData.get(label);
-      if (description !== null) {
-        this.setState({ description: description });
-      }
+      this.setState({ description: description });
       return;
     }
     HttpClient.Get(`./docs/${label}.md`)
