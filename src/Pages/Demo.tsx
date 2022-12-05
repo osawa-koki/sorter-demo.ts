@@ -668,7 +668,7 @@ class Demo extends React.Component {
       return array;
     };
     this.setState({ sticks: await bogoSort(sticks) });
-  }
+  };
 
   async SleepSort() {
     const sticks = this.state.sticks;
@@ -683,7 +683,7 @@ class Demo extends React.Component {
       return sorted;
     };
     this.setState({ sticks: await sleepSort(sticks) });
-  }
+  };
 
   componentDidMount() {
     this.update_stick_count(0);
