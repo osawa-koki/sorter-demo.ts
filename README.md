@@ -2,6 +2,10 @@
 
 並び変えアルゴリズムをデモするサイト。  
 
+## BubbleSort
+
+![BubbleSort](./.development/img/BubbleSort.gif)  
+
 ## 自分用メモ
 
 ```shell
@@ -16,6 +20,10 @@ yarn create react-app <プロジェクト名> --template typescript
 # scssのインストール
 yarn add node-sass
 ```
+
+## その他イロイロ
+
+- [youtube(BubbleSort)]()
 
 ## 参考文献
 
