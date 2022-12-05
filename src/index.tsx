@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Settings from './Common/Settings';
+
 // ルーティング
 import Root from './Pages/Root';
 import NotFound from './Pages/NotFound';
@@ -19,9 +21,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/sorter-demo.ts" element={<Root />} />
-        <Route path="/sorter-demo.ts/description" element={<Description />} />
-        <Route path="/sorter-demo.ts/demo" element={<Demo />} />
+        <Route path={`${Settings.ROOT_PATH}/`} element={<Root />} />
+        <Route path={`${Settings.ROOT_PATH}/description`} element={<Description />} />
+        <Route path={`${Settings.ROOT_PATH}/demo`} element={<Demo />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
