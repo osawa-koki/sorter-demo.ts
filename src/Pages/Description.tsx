@@ -56,7 +56,7 @@ class Description extends React.Component {
   render() {
     return (
       <div id="Description">
-        <div>
+        <div id="DescriptionSelectBox">
           <Select options={readme_added_sort_algorithms} placeholder="SELECT SORTING ALGORITHM" value={this.state.selected_sorting_algorithm} onChange={this.select_changed} />
         </div>
         <div dangerouslySetInnerHTML={{__html: this.state.description}} className="markdown"></div>

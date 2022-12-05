@@ -23,3 +23,38 @@ table {
     padding: 0.3rem 0.5rem;
   }
 }
+
+.markdown {
+  h1 {
+    $border_wodth: 7;
+    font-size: 2rem;
+    border-left: #{$border_wodth}px red solid;
+    padding-left: #{$border_wodth * 2}px;
+  }
+  h2 {
+    $border_wodth: 5;
+    font-size: 1.8rem;
+    border-left: #{$border_wodth}px blue solid;
+    padding-left: #{$border_wodth * 2}px;
+  }
+  h3 {
+    $border_wodth: 3;
+    font-size: 1.6rem;
+    border-left: #{$border_wodth}px green solid;
+    padding-left: #{$border_wodth * 2}px;
+  }
+  h4 {
+    $border_wodth: 1;
+    font-size: 1.4rem;
+    border-left: #{$border_wodth}px yellow solid;
+    padding-left: #{$border_wodth * 2}px;
+  }
+  table {
+    border-collapse: collapse;
+    th,
+    td {
+      border: 1px solid gray;
+      padding: 5px;
+    }
+  }
+}
