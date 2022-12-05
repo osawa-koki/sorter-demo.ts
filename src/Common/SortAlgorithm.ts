@@ -117,9 +117,9 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     is_valid: true,
     value: 13,
     label: "Gnome Sort",
-    label_ja: "グノームソート",
+    label_ja: "ノームソート",
     description: "Gnome sort is a sorting algorithm which is similar to insertion sort in that it works with one item at a time but gets the item to the proper place by a series of swaps, similar to a bubble sort. It is conceptually simple, requiring no nested loops.",
-    description_ja: "グノームソートは、比較ソートの一種で、安定ソートではありません。",
+    description_ja: "ノームソートは、比較ソートの一種で、安定ソートではありません。",
   } as SortAlgorithmType,
   {
     is_valid: true,
