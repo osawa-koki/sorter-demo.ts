@@ -18,6 +18,7 @@ type Props = {
   selected_sorting_algorithm: SortAlgorithmType;
   stick_count: number;
   sticks: number[];
+  is_locked: boolean;
 };
 
 class Demo extends React.Component {
@@ -27,6 +28,7 @@ class Demo extends React.Component {
     selected_sorting_algorithm: sorting_algorithms[0],
     stick_count: 100,
     sticks: [],
+    is_locked: false,
   };
 
   select_changed = (selected_option: any) => {
@@ -63,78 +65,84 @@ class Demo extends React.Component {
     return true;
   }
 
-  Sort() {
+  async Sort() {
+    if (this.state.is_locked) {
+      console.log("locked...");
+      return;
+    }
+    this.setState({ is_locked: true });
     const sort_algorithm = this.state.selected_sorting_algorithm;
     switch (sort_algorithm.label) {
       case "Bubble Sort":
-        this.BubbleSort();
+        await this.BubbleSort();
         break;
       case "Selection Sort":
-        this.SelectionSort();
+        await this.SelectionSort();
         break;
       case "Insertion Sort":
-        this.InsertionSort();
+        await this.InsertionSort();
         break;
       case "Merge Sort":
-        this.MergeSort();
+        await this.MergeSort();
         break;
       case "Quick Sort":
-        this.QuickSort();
+        await this.QuickSort();
         break;
       case "Heap Sort":
-        this.HeapSort();
+        await this.HeapSort();
         break;
       case "Counting Sort":
-        this.CountingSort();
+        await this.CountingSort();
         break;
       case "Radix Sort":
-        this.RadixSort();
+        await this.RadixSort();
         break;
       case "Bucket Sort":
-        this.BucketSort();
+        await this.BucketSort();
         break;
       case "Shell Sort":
-        this.ShellSort();
+        await this.ShellSort();
         break;
       case "Comb Sort":
-        this.CombSort();
+        await this.CombSort();
         break;
       case "Cycle Sort":
-        this.CycleSort();
+        await this.CycleSort();
         break;
       case "Pancake Sort":
-        this.PancakeSort();
+        await this.PancakeSort();
         break;
       case "Gnome Sort":
-        this.GnomeSort();
+        await this.GnomeSort();
         break;
       case "Stooge Sort":
-        this.StoogeSort();
+        await this.StoogeSort();
         break;
       case "Bitonic Sort":
-        this.BitonicSort();
+        await this.BitonicSort();
         break;
       case "Pigeonhole Sort":
-        this.PigeonholeSort();
+        await this.PigeonholeSort();
         break;
       case "Odd-Even Sort":
-        this.OddEvenSort();
+        await this.OddEvenSort();
         break;
       case "Cocktail Sort":
-        this.CocktailSort();
+        await this.CocktailSort();
         break;
       case "Bogo Sort":
-        this.BogoSort();
+        await this.BogoSort();
         break;
       case "Sleep Sort":
-        this.SleepSort();
+        await this.SleepSort();
         break;
       case "Strand Sort":
-        this.StrandSort();
+        await this.StrandSort();
         break;
       default:
         break;
     }
+    this.setState({ is_locked: false });
   };
 
   async BubbleSort() {
@@ -722,7 +730,7 @@ class Demo extends React.Component {
         <div id="Demo">
           <div id="DemoHeader">
             <div id="DemoAlgorithmSelectBox">
-              <Select options={this.state.sorting_algorithm} placeholder="SELECT SORTING ALGORITHM" value={this.state.selected_sorting_algorithm} onChange={this.select_changed} />
+              <Select options={this.state.sorting_algorithm} placeholder="SELECT SORTING ALGORITHM" value={this.state.selected_sorting_algorithm} onChange={this.select_changed} isDisabled={this.state.is_locked} />
             </div>
             <div id="DemoAlgorithmInfoBox">
               <table>
@@ -747,17 +755,17 @@ class Demo extends React.Component {
               </table>
             </div>
             <div id="StickCountChanger">
-              <img onClick={() => {this.update_stick_count(-10)}} src={img_10down} alt="1down" className={((30 <= this.state.stick_count - 10) ? "" : "disabled") + " StickCountChangerComponents updater"} />
-              <img onClick={() => {this.update_stick_count(-1)}} src={img_1down} alt="10down" className={((30 <= this.state.stick_count - 1) ? "" : "disabled") + " StickCountChangerComponents updater"} />
+              <img onClick={() => {this.update_stick_count(-10)}} src={img_10down} alt="1down" className={((30 <= this.state.stick_count - 10 && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
+              <img onClick={() => {this.update_stick_count(-1)}} src={img_1down} alt="10down" className={((30 <= this.state.stick_count - 1 && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
               <div className="StickCountChangerComponents displayer">{this.state.stick_count}回</div>
-              <img onClick={() => {this.update_stick_count(+1)}} src={img_1up} alt="1up" className={((this.state.stick_count + 1 <= 300) ? "" : "disabled") + " StickCountChangerComponents updater"} />
-              <img onClick={() => {this.update_stick_count(+10)}} src={img_10up} alt="10up" className={((this.state.stick_count + 10 <= 300) ? "" : "disabled") + " StickCountChangerComponents updater"} />
+              <img onClick={() => {this.update_stick_count(+1)}} src={img_1up} alt="1up" className={((this.state.stick_count + 1 <= 300 && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
+              <img onClick={() => {this.update_stick_count(+10)}} src={img_10up} alt="10up" className={((this.state.stick_count + 10 <= 300 && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
             </div>
           </div>
           <div id="DemoBody">
             <div id="DemoBodyButtons">
-              <Button variant="outline-success" onClick={this.Shuffle}>シャッフル♪</Button>
-              <Button variant="outline-primary" onClick={() => {this.Sort()}}>ソート開始♪</Button>
+              <Button variant="outline-success" onClick={this.Shuffle} disabled={this.state.is_locked}>シャッフル♪</Button>
+              <Button variant="outline-primary" onClick={() => {this.Sort()}} disabled={this.state.is_locked}>ソート開始♪</Button>
             </div>
             <div id="DemoCanvas">
               {
