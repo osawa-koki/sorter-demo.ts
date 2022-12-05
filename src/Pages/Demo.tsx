@@ -210,7 +210,7 @@ class Demo extends React.Component {
       let j = 0;
       const result = [];
       while (i < left.length && j < right.length) {
-        if (this.state.is_resetting) return; // 中断用
+        if (this.state.is_resetting) return result.concat(left.slice(i)).concat(right.slice(j)); // 中断用
         if (left[i] < right[j]) {
           result.push(left[i]);
           i++;
@@ -236,9 +236,9 @@ class Demo extends React.Component {
   };
 
   async QuickSort() {
-    if (this.state.is_resetting) return; // 中断用
     const sticks = this.state.sticks;
     const quickSort = async (array: number[], left: number, right: number) => {
+      if (this.state.is_resetting) return array; // 中断用
       let index;
       if (array.length > 1) {
         index = await partition(array, left, right);
@@ -281,7 +281,7 @@ class Demo extends React.Component {
       let size = array.length;
       buildMaxHeap(array);
       while (size > 1) {
-        if (this.state.is_resetting) return; // 中断用
+        if (this.state.is_resetting) return array; // 中断用
         size--;
         [array[0], array[size]] = [array[size], array[0]];
         await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
@@ -327,7 +327,7 @@ class Demo extends React.Component {
       let j = 0;
       for (let i = min; i <= max; i++) {
         while (countArray[i - min] > 0) {
-          if (this.state.is_resetting) return; // 中断用
+          if (this.state.is_resetting) return array; // 中断用
           array[j] = i;
           countArray[i - min]--;
           j++;
@@ -346,7 +346,7 @@ class Demo extends React.Component {
       const max = Math.max(...array);
       let divisor = 1;
       while (max / divisor >= 1) {
-        if (this.state.is_resetting) return; // 中断用
+        if (this.state.is_resetting) return array; // 中断用
         await countingSort(array, divisor);
         divisor *= 10;
       }
@@ -362,7 +362,7 @@ class Demo extends React.Component {
       }
       const sortedArray = new Array(array.length);
       for (let i = array.length - 1; i >= 0; i--) {
-        if (this.state.is_resetting) return; // 中断用
+        if (this.state.is_resetting) return sortedArray; // 中断用
         sortedArray[countArray[Math.floor(array[i] / divisor) % 10] - 1] = array[i];
         countArray[Math.floor(array[i] / divisor) % 10]--;
         await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
@@ -381,13 +381,14 @@ class Demo extends React.Component {
       const min = Math.min(...array);
       const bucketSize = (max - min) / 10 + 1;
       for (let i = 0; i < array.length; i++) {
+        if (this.state.is_resetting) return array; // 中断用
         buckets[Math.floor((array[i] - min) / bucketSize)].push(array[i]);
       }
       let j = 0;
       for (let i = 0; i < buckets.length; i++) {
         await insertionSort(buckets[i]);
         for (let k = 0; k < buckets[i].length; k++) {
-          if (this.state.is_resetting) return; // 中断用
+          if (this.state.is_resetting) return array; // 中断用
           array[j] = buckets[i][k];
           j++;
           await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
@@ -422,7 +423,7 @@ class Demo extends React.Component {
           let j = i;
           const temp = array[i];
           while (j >= gap && array[j - gap] > temp) {
-            if (this.state.is_resetting) return; // 中断用
+            if (this.state.is_resetting) return array; // 中断用
             array[j] = array[j - gap];
             j -= gap;
             await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
