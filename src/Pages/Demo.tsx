@@ -78,6 +78,9 @@ class Demo extends React.Component {
       case "Counting Sort":
         this.CountingSort();
         break;
+      case "Radix Sort":
+        this.RadixSort();
+        break;
       default:
         break;
     }
@@ -259,6 +262,38 @@ class Demo extends React.Component {
       return array;
     };
     this.setState({ sticks: await countingSort(sticks) });
+  };
+
+  async RadixSort() {
+    const sticks = this.state.sticks;
+    const radixSort = async (array: number[]) => {
+      const max = Math.max(...array);
+      let divisor = 1;
+      while (max / divisor >= 1) {
+        await countingSort(array, divisor);
+        divisor *= 10;
+      }
+      return array;
+    };
+    const countingSort = async (array: number[], divisor: number) => {
+      const countArray = new Array(10).fill(0);
+      for (let i = 0; i < array.length; i++) {
+        countArray[Math.floor(array[i] / divisor) % 10]++;
+      }
+      for (let i = 1; i < countArray.length; i++) {
+        countArray[i] += countArray[i - 1];
+      }
+      const sortedArray = new Array(array.length);
+      for (let i = array.length - 1; i >= 0; i--) {
+        sortedArray[countArray[Math.floor(array[i] / divisor) % 10] - 1] =
+          array[i];
+        countArray[Math.floor(array[i] / divisor) % 10]--;
+        await new Promise(resolve => setTimeout(resolve, 3));
+        this.setState({ sticks: sortedArray });
+      }
+      return sortedArray;
+    };
+    this.setState({ sticks: await radixSort(sticks) });
   };
 
   componentDidMount() {
