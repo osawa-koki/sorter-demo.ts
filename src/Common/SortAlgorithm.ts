@@ -141,9 +141,9 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     is_valid: true,
     value: 16,
     label: "Pigeonhole Sort",
-    label_ja: "パイソンホールソート",
+    label_ja: "鳩の巣ソート",
     description: "Pigeonhole sort is a sorting algorithm that is suitable for sorting lists of elements where the number of elements (n) and the length of the range of possible key values (N) are approximately the same. It requires O(n + N) time.",
-    description_ja: "パイソンホールソートは、比較ソートの一種で、安定ソートです。",
+    description_ja: "鳩の巣ソートは、比較ソートの一種で、安定ソートです。",
   } as SortAlgorithmType,
   {
     is_valid: true,
