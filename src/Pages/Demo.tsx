@@ -105,6 +105,9 @@ class Demo extends React.Component {
       case "Bitonic Sort":
         this.BitonicSort();
         break;
+      case "Pigeonhole Sort":
+        this.PigeonholeSort();
+        break;
       default:
         break;
     }
@@ -544,6 +547,29 @@ class Demo extends React.Component {
       return array;
     };
     this.setState({ sticks: await bitonicSort(sticks) });
+  };
+
+  async PigeonholeSort() {
+    const sticks = this.state.sticks;
+    const pigeonholeSort = async (array: number[]) => {
+      const min = Math.min(...array);
+      const max = Math.max(...array);
+      const size = max - min + 1;
+      const holes = Array(size).fill(0);
+      for (let i = 0; i < array.length; i++) {
+        holes[array[i] - min]++;
+      }
+      let i = 0;
+      for (let count = 0; count < size; count++) {
+        while (holes[count]-- > 0) {
+          array[i++] = count + min;
+          await new Promise(resolve => setTimeout(resolve, 3));
+          this.setState({ sticks: array });
+        }
+      }
+      return array;
+    };
+    this.setState({ sticks: await pigeonholeSort(sticks) });
   };
 
   componentDidMount() {
