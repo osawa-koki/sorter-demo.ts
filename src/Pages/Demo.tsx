@@ -96,6 +96,9 @@ class Demo extends React.Component {
       case "Pancake Sort":
         this.PancakeSort();
         break;
+      case "Gnome Sort":
+        this.GnomeSort();
+        break;
       default:
         break;
     }
@@ -468,6 +471,25 @@ class Demo extends React.Component {
       }
     };
     this.setState({ sticks: await pancakeSort(sticks) });
+  };
+
+  async GnomeSort() {
+    const sticks = this.state.sticks;
+    const gnomeSort = async (array: number[]) => {
+      let i = 1;
+      while (i < array.length) {
+        if (i === 0 || array[i - 1] <= array[i]) {
+          i++;
+        } else {
+          [array[i], array[i - 1]] = [array[i - 1], array[i]];
+          i--;
+          await new Promise(resolve => setTimeout(resolve, 3));
+          this.setState({ sticks: array });
+        }
+      }
+      return array;
+    };
+    this.setState({ sticks: await gnomeSort(sticks) });
   };
 
   componentDidMount() {
