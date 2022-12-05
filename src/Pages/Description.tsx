@@ -12,7 +12,7 @@ type Props = {
   description: string;
   sorting_algorithm: SortAlgorithmType[];
   selected_sorting_algorithm: SortAlgorithmType;
-}
+};
 
 const readme_added_sort_algorithms = [{
   value: -1,
@@ -20,7 +20,7 @@ const readme_added_sort_algorithms = [{
   label_ja: "",
   description: "",
   description_ja: "",
-} as SortAlgorithmType, ...sorting_algorithms]
+} as SortAlgorithmType, ...sorting_algorithms];
 
 class Description extends React.Component {
 
@@ -28,7 +28,7 @@ class Description extends React.Component {
     description: '',
     sorting_algorithm: readme_added_sort_algorithms,
     selected_sorting_algorithm: readme_added_sort_algorithms[0],
-  }
+  };
 
   constructor(props: any) {
     super(props);
@@ -36,7 +36,7 @@ class Description extends React.Component {
       const description = marked.parse(response);
       this.setState({ description: description });
     });
-  }
+  };
 
   select_changed = (selected_option: any) => {
     const label = selected_option.label.replace(/ /g, '_');
@@ -51,7 +51,7 @@ class Description extends React.Component {
     .catch((error) => {
       console.log(error);
     });
-  }
+  };
 
   render() {
     return (
@@ -62,7 +62,7 @@ class Description extends React.Component {
         <div dangerouslySetInnerHTML={{__html: this.state.description}} className="markdown"></div>
       </div>
     );
-  }
+  };
 }
 
 export default Description;
