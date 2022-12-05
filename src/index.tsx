@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // ルーティング
 import Root from './Pages/Root';
 import NotFound from './Pages/NotFound';

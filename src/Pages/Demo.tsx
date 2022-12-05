@@ -1,6 +1,8 @@
 import React from 'react';
 import Select from 'react-select';
 
+import Button from 'react-bootstrap/Button';
+
 import Header from './Header';
 
 import './Demo.scss';
@@ -83,7 +85,7 @@ class Demo extends React.Component {
           </div>
           <div id="DemoBody">
             <div id="DemoBodyX___">
-              <button onClick={this.Shuffle}>シャッフル♪</button>
+              <Button variant="outline-primary" onClick={this.Shuffle}>シャッフル♪</Button>
             </div>
             <div id="DemoCanvas"></div>
           </div>
