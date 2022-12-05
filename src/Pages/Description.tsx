@@ -22,6 +22,8 @@ const readme_added_sort_algorithms = [{
   description_ja: "",
 } as SortAlgorithmType, ...sorting_algorithms];
 
+const DescriptionData: Map<string, string> = new Map();
+
 class Description extends React.Component {
 
   state: Props = {
@@ -32,26 +34,27 @@ class Description extends React.Component {
 
   constructor(props: any) {
     super(props);
-    HttpClient.Get("./docs/description.md").then((response) => {
-      const description = marked.parse(response);
-      this.setState({ description: description });
-    });
+    this.update_markdown(this.state.selected_sorting_algorithm);
   };
 
   select_changed = (selected_option: any) => {
-    const label = selected_option.label.replace(/ /g, '_');
+    this.update_markdown(selected_option);
+  };
+
+  update_markdown = (target_option: any) => {
+    const label = target_option.label.replace(/ /g, '_');
     HttpClient.Get(`./docs/${label}.md`)
     .then((response) => {
       const description = marked.parse(response);
       this.setState({
         description: description,
-        selected_sorting_algorithm: selected_option,
+        selected_sorting_algorithm: target_option,
       });
     })
     .catch((error) => {
       console.log(error);
     });
-  };
+  }
 
   render() {
     return (
