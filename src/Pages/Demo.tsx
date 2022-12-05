@@ -126,6 +126,9 @@ class Demo extends React.Component {
       case "Bogo Sort":
         this.BogoSort();
         break;
+      case "Sleep Sort":
+        this.SleepSort();
+        break;
       default:
         break;
     }
@@ -665,6 +668,21 @@ class Demo extends React.Component {
       return array;
     };
     this.setState({ sticks: await bogoSort(sticks) });
+  }
+
+  async SleepSort() {
+    const sticks = this.state.sticks;
+    const sleepSort = async (array: number[]) => {
+      const sorted: number[] = [];
+      for (let i = 0; i < array.length; i++) {
+        setTimeout(() => {
+          sorted.push(array[i]);
+          this.setState({ sticks: sorted });
+        }, array[i] * 3);
+      }
+      return sorted;
+    };
+    this.setState({ sticks: await sleepSort(sticks) });
   }
 
   componentDidMount() {
