@@ -65,16 +65,17 @@ class Demo extends React.Component {
     }
   }
 
-  BubbleSort() {
+  async BubbleSort() {
     const sticks = this.state.sticks;
     for (let i = 0; i < sticks.length - 1; i++) {
       for (let j = sticks.length - 1; i < j; j--) {
         if (sticks[j] < sticks[j - 1]) {
           [sticks[j], sticks[j - 1]] = [sticks[j - 1], sticks[j]];
+          await new Promise(resolve => setTimeout(resolve, 3));
+          this.setState({ sticks: sticks });
         }
       }
     }
-    this.setState({ sticks: sticks });
   }
 
   componentDidMount() {
