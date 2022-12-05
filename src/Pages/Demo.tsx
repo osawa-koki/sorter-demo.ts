@@ -69,6 +69,9 @@ class Demo extends React.Component {
       case "Merge Sort":
         this.MergeSort();
         break;
+      case "Quick Sort":
+        this.QuickSort();
+        break;
       default:
         break;
     }
@@ -148,6 +151,45 @@ class Demo extends React.Component {
       return merge(await mergeSort(left), await mergeSort(right));
     };
     this.setState({ sticks: await mergeSort(sticks) });
+  };
+
+  async QuickSort() {
+    const sticks = this.state.sticks;
+    const quickSort = async (array: number[], left: number, right: number) => {
+      let index;
+      if (array.length > 1) {
+        index = await partition(array, left, right);
+        if (left < index - 1) {
+          await quickSort(array, left, index - 1);
+        }
+        if (index < right) {
+          await quickSort(array, index, right);
+        }
+      }
+      return array;
+    };
+    const partition = async (array: number[], left: number, right: number) => {
+      const pivot = array[Math.floor((right + left) / 2)];
+      let i = left;
+      let j = right;
+      while (i <= j) {
+        while (array[i] < pivot) {
+          i++;
+        }
+        while (array[j] > pivot) {
+          j--;
+        }
+        if (i <= j) {
+          [array[i], array[j]] = [array[j], array[i]];
+          i++;
+          j--;
+          await new Promise(resolve => setTimeout(resolve, 3));
+          this.setState({ sticks: array });
+        }
+      }
+      return i;
+    };
+    this.setState({ sticks: await quickSort(sticks, 0, sticks.length - 1) });
   };
 
   componentDidMount() {
