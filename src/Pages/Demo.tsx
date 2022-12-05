@@ -90,6 +90,9 @@ class Demo extends React.Component {
       case "Comb Sort":
         this.CombSort();
         break;
+      case "Cycle Sort":
+        this.CycleSort();
+        break;
       default:
         break;
     }
@@ -392,6 +395,46 @@ class Demo extends React.Component {
       return array;
     };
     this.setState({ sticks: await combSort(sticks) });
+  };
+
+  async CycleSort() {
+    const sticks = this.state.sticks;
+    const cycleSort = async (array: number[]) => {
+      for (let cycleStart = 0; cycleStart < array.length - 1; cycleStart++) {
+        let item = array[cycleStart];
+        let pos = cycleStart;
+        for (let i = cycleStart + 1; i < array.length; i++) {
+          if (array[i] < item) {
+            pos++;
+          }
+        }
+        if (pos === cycleStart) {
+          continue;
+        }
+        while (item === array[pos]) {
+          pos++;
+        }
+        [array[pos], item] = [item, array[pos]];
+        await new Promise(resolve => setTimeout(resolve, 3));
+        this.setState({ sticks: array });
+        while (pos !== cycleStart) {
+          pos = cycleStart;
+          for (let i = cycleStart + 1; i < array.length; i++) {
+            if (array[i] < item) {
+              pos++;
+            }
+          }
+          while (item === array[pos]) {
+            pos++;
+          }
+          [array[pos], item] = [item, array[pos]];
+          await new Promise(resolve => setTimeout(resolve, 3));
+          this.setState({ sticks: array });
+        }
+      }
+      return array;
+    };
+    this.setState({ sticks: await cycleSort(sticks) });
   };
 
   componentDidMount() {
