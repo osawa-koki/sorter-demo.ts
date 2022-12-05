@@ -806,7 +806,7 @@ class Demo extends React.Component {
               <Button variant="outline-success" onClick={this.Shuffle} disabled={this.state.is_locked}>シャッフル♪</Button>
               <Button variant="outline-primary" onClick={() => {this.Sort()}} disabled={this.state.is_locked}>ソート開始♪</Button>
               {
-                (this.state.is_locked) ? <Button variant="outline-danger" onClick={() => {this.Reset()}}>リセット</Button> : ""
+                (this.state.is_locked) ? <Button variant="outline-danger" onClick={() => {this.Reset()}}>一時停止</Button> : ""
               }
             </div>
             <div id="DemoCanvas">
