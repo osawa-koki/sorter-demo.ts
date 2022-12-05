@@ -81,6 +81,9 @@ class Demo extends React.Component {
       case "Radix Sort":
         this.RadixSort();
         break;
+      case "Bucket Sort":
+        this.BucketSort();
+        break;
       default:
         break;
     }
@@ -294,6 +297,45 @@ class Demo extends React.Component {
       return sortedArray;
     };
     this.setState({ sticks: await radixSort(sticks) });
+  };
+
+  async BucketSort() {
+    const sticks = this.state.sticks;
+    const bucketSort = async (array: number[]) => {
+      const buckets: number[][] = new Array(10).fill(0).map(() => []);
+      const max = Math.max(...array);
+      const min = Math.min(...array);
+      const bucketSize = (max - min) / 10 + 1;
+      for (let i = 0; i < array.length; i++) {
+        buckets[Math.floor((array[i] - min) / bucketSize)].push(array[i]);
+      }
+      let j = 0;
+      for (let i = 0; i < buckets.length; i++) {
+        await insertionSort(buckets[i]);
+        for (let k = 0; k < buckets[i].length; k++) {
+          array[j] = buckets[i][k];
+          j++;
+          await new Promise(resolve => setTimeout(resolve, 3));
+          this.setState({ sticks: array });
+        }
+      }
+      return array;
+    };
+    const insertionSort = async (array: number[]) => {
+      for (let i = 1; i < array.length; i++) {
+        let j = i - 1;
+        const temp = array[i];
+        while (j >= 0 && array[j] > temp) {
+          array[j + 1] = array[j];
+          j--;
+          await new Promise(resolve => setTimeout(resolve, 3));
+          this.setState({ sticks: array });
+        }
+        array[j + 1] = temp;
+      }
+      return array;
+    };
+    this.setState({ sticks: await bucketSort(sticks) });
   };
 
   componentDidMount() {
