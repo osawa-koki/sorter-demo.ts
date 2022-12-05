@@ -670,7 +670,7 @@ class Demo extends React.Component {
       while (swapped) {
         swapped = false;
         for (let i = start; i < end - 1; ++i) {
-          if (this.state.is_resetting) return; // 中断用
+          if (this.state.is_resetting) return array; // 中断用
           if (array[i] > array[i + 1]) {
             [array[i], array[i + 1]] = [array[i + 1], array[i]];
             swapped = true;
@@ -684,7 +684,7 @@ class Demo extends React.Component {
         swapped = false;
         end--;
         for (let i = end - 1; i >= start; i--) {
-          if (this.state.is_resetting) return; // 中断用
+          if (this.state.is_resetting) return array; // 中断用
           if (array[i] > array[i + 1]) {
             [array[i], array[i + 1]] = [array[i + 1], array[i]];
             swapped = true;
