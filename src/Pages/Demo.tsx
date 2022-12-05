@@ -191,13 +191,13 @@ class Demo extends React.Component {
       if (this.state.is_resetting) return; // 中断用
       let min = i;
       for (let j = i + 1; j < sticks.length; j++) {
+        await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         if (sticks[j] < sticks[min]) {
           min = j;
         }
       }
       if (min !== i) {
         [sticks[i], sticks[min]] = [sticks[min], sticks[i]];
-        await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: sticks });
       }
     }
