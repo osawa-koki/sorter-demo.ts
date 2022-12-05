@@ -34,7 +34,14 @@ class Demo extends React.Component {
   };
 
   update_stick_count = (operant: number) => {
-    this.setState({ stick_count: this.state.stick_count + operant });
+    const sticks = [];
+    for (let i = 1; i <= this.state.stick_count + operant; i++) {
+      sticks.push(i);
+    }
+    this.setState({
+      sticks: sticks,
+      stick_count: this.state.stick_count + operant,
+    });
   };
 
   Shuffle = () => {
@@ -42,8 +49,8 @@ class Demo extends React.Component {
   };
 
   componentDidMount() {
-
-  }
+    this.update_stick_count(0);
+  };
 
   render() {
     return (
@@ -88,7 +95,13 @@ class Demo extends React.Component {
             <div id="DemoBodyX___">
               <Button variant="outline-primary" onClick={this.Shuffle}>シャッフル♪</Button>
             </div>
-            <div id="DemoCanvas"></div>
+            <div id="DemoCanvas">
+              {
+                this.state.sticks.map((stick, index) => {
+                  return <div key={index} className="Stick" style={{height: `calc(100% / ${this.state.stick_count} * ${stick})`, backgroundColor: `hsl(${(stick * 360 / this.state.stick_count).toString()}deg, 100%, 50%)`, width: `calc(100% / ${this.state.stick_count})`}}></div>
+                })
+              }
+            </div>
           </div>
         </div>
       </div>
