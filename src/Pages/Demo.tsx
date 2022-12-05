@@ -54,6 +54,15 @@ class Demo extends React.Component {
     this.setState({ sticks: sticks });
   };
 
+  isSorted(array: number[]): boolean {
+    for (let i = 1; i < array.length; i++) {
+      if (array[i - 1] > array[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   Sort() {
     const sort_algorithm = this.state.selected_sorting_algorithm;
     switch (sort_algorithm.label) {
@@ -113,6 +122,9 @@ class Demo extends React.Component {
         break;
       case "Cocktail Sort":
         this.CocktailSort();
+        break;
+      case "Bogo Sort":
+        this.BogoSort();
         break;
       default:
         break;
@@ -641,6 +653,19 @@ class Demo extends React.Component {
     };
     this.setState({ sticks: await cocktailSort(sticks) });
   };
+
+  async BogoSort() {
+    const sticks = this.state.sticks;
+    const bogoSort = async (array: number[]) => {
+      while (!this.isSorted(array)) {
+        this.Shuffle();
+        await new Promise(resolve => setTimeout(resolve, 3));
+        this.setState({ sticks: array });
+      }
+      return array;
+    };
+    this.setState({ sticks: await bogoSort(sticks) });
+  }
 
   componentDidMount() {
     this.update_stick_count(0);
