@@ -102,6 +102,9 @@ class Demo extends React.Component {
       case "Stooge Sort":
         this.StoogeSort();
         break;
+      case "Bitonic Sort":
+        this.BitonicSort();
+        break;
       default:
         break;
     }
@@ -512,6 +515,35 @@ class Demo extends React.Component {
       return array;
     };
     this.setState({ sticks: await stoogeSort(sticks) });
+  };
+
+  async BitonicSort() {
+    const sticks = this.state.sticks;
+    const bitonicSort = async (array: number[], up = true) => {
+      if (array.length > 1) {
+        const mid = Math.floor(array.length / 2);
+        await bitonicSort(array.slice(0, mid), true);
+        await bitonicSort(array.slice(mid), false);
+        await bitonicMerge(array, up);
+      }
+      return array;
+    };
+    const bitonicMerge = async (array: number[], up: boolean) => {
+      if (array.length > 1) {
+        const mid = Math.floor(array.length / 2);
+        for (let i = 0; i < mid; i++) {
+          if (up === (array[i] > array[i + mid])) {
+            [array[i], array[i + mid]] = [array[i + mid], array[i]];
+            await new Promise(resolve => setTimeout(resolve, 3));
+            this.setState({ sticks: array });
+          }
+        }
+        await bitonicMerge(array.slice(0, mid), up);
+        await bitonicMerge(array.slice(mid), up);
+      }
+      return array;
+    };
+    this.setState({ sticks: await bitonicSort(sticks) });
   };
 
   componentDidMount() {
