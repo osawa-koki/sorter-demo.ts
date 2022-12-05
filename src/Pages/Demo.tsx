@@ -38,6 +38,7 @@ class Demo extends React.Component {
   };
 
   Shuffle = () => {
+    console.log("Shuffle");
   };
 
   componentDidMount() {
