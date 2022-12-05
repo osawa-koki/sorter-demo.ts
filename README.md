@@ -23,7 +23,8 @@ yarn add node-sass
 
 ## その他イロイロ
 
-- [youtube(BubbleSort)]()
+- [youtube(BubbleSort)](https://youtu.be/ZAR3CzkYD5k)
+- [youtube(BubbleSort)](https://youtu.be/CBvBxfwOPnQ)
 
 ## 参考文献
 
