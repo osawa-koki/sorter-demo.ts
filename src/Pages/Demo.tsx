@@ -19,6 +19,7 @@ type Props = {
   stick_count: number;
   sticks: number[];
   is_locked: boolean;
+  interval_time: number;
 };
 
 class Demo extends React.Component {
@@ -29,6 +30,7 @@ class Demo extends React.Component {
     stick_count: 100,
     sticks: [],
     is_locked: false,
+    interval_time: 3,
   };
 
   select_changed = (selected_option: any) => {
@@ -151,7 +153,7 @@ class Demo extends React.Component {
       for (let j = sticks.length - 1; i < j; j--) {
         if (sticks[j] < sticks[j - 1]) {
           [sticks[j], sticks[j - 1]] = [sticks[j - 1], sticks[j]];
-          await new Promise(resolve => setTimeout(resolve, 3));
+          await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
           this.setState({ sticks: sticks });
         }
       }
@@ -166,7 +168,7 @@ class Demo extends React.Component {
       while (j >= 0 && sticks[j] > v) {
         sticks[j + 1] = sticks[j];
         j--;
-        await new Promise(resolve => setTimeout(resolve, 3));
+        await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: sticks });
       }
       sticks[j + 1] = v;
@@ -184,7 +186,7 @@ class Demo extends React.Component {
       }
       if (min !== i) {
         [sticks[i], sticks[min]] = [sticks[min], sticks[i]];
-        await new Promise(resolve => setTimeout(resolve, 3));
+        await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: sticks });
       }
     }
@@ -204,7 +206,7 @@ class Demo extends React.Component {
           result.push(right[j]);
           j++;
         }
-        await new Promise(resolve => setTimeout(resolve, 3));
+        await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: result });
       }
       return result.concat(left.slice(i)).concat(right.slice(j));
@@ -251,7 +253,7 @@ class Demo extends React.Component {
           [array[i], array[j]] = [array[j], array[i]];
           i++;
           j--;
-          await new Promise(resolve => setTimeout(resolve, 3));
+          await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
           this.setState({ sticks: array });
         }
       }
@@ -268,7 +270,7 @@ class Demo extends React.Component {
       while (size > 1) {
         size--;
         [array[0], array[size]] = [array[size], array[0]];
-        await new Promise(resolve => setTimeout(resolve, 3));
+        await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: array });
         heapify(array, size, 0);
       }
@@ -314,7 +316,7 @@ class Demo extends React.Component {
           array[j] = i;
           countArray[i - min]--;
           j++;
-          await new Promise(resolve => setTimeout(resolve, 3));
+          await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
           this.setState({ sticks: array });
         }
       }
@@ -347,7 +349,7 @@ class Demo extends React.Component {
         sortedArray[countArray[Math.floor(array[i] / divisor) % 10] - 1] =
           array[i];
         countArray[Math.floor(array[i] / divisor) % 10]--;
-        await new Promise(resolve => setTimeout(resolve, 3));
+        await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: sortedArray });
       }
       return sortedArray;
@@ -371,7 +373,7 @@ class Demo extends React.Component {
         for (let k = 0; k < buckets[i].length; k++) {
           array[j] = buckets[i][k];
           j++;
-          await new Promise(resolve => setTimeout(resolve, 3));
+          await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
           this.setState({ sticks: array });
         }
       }
@@ -384,7 +386,7 @@ class Demo extends React.Component {
         while (j >= 0 && array[j] > temp) {
           array[j + 1] = array[j];
           j--;
-          await new Promise(resolve => setTimeout(resolve, 3));
+          await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
           this.setState({ sticks: array });
         }
         array[j + 1] = temp;
@@ -405,7 +407,7 @@ class Demo extends React.Component {
           while (j >= gap && array[j - gap] > temp) {
             array[j] = array[j - gap];
             j -= gap;
-            await new Promise(resolve => setTimeout(resolve, 3));
+            await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
             this.setState({ sticks: array });
           }
           array[j] = temp;
@@ -433,7 +435,7 @@ class Demo extends React.Component {
           if (array[i] > array[i + gap]) {
             [array[i], array[i + gap]] = [array[i + gap], array[i]];
             swapped = true;
-            await new Promise(resolve => setTimeout(resolve, 3));
+            await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
             this.setState({ sticks: array });
           }
           i++;
@@ -462,7 +464,7 @@ class Demo extends React.Component {
           pos++;
         }
         [array[pos], item] = [item, array[pos]];
-        await new Promise(resolve => setTimeout(resolve, 3));
+        await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: array });
         while (pos !== cycleStart) {
           pos = cycleStart;
@@ -475,7 +477,7 @@ class Demo extends React.Component {
             pos++;
           }
           [array[pos], item] = [item, array[pos]];
-          await new Promise(resolve => setTimeout(resolve, 3));
+          await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
           this.setState({ sticks: array });
         }
       }
@@ -507,7 +509,7 @@ class Demo extends React.Component {
         [array[i], array[k]] = [array[k], array[i]];
         i++;
         k--;
-        await new Promise(resolve => setTimeout(resolve, 3));
+        await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: array });
       }
     };
@@ -524,7 +526,7 @@ class Demo extends React.Component {
         } else {
           [array[i], array[i - 1]] = [array[i - 1], array[i]];
           i--;
-          await new Promise(resolve => setTimeout(resolve, 3));
+          await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
           this.setState({ sticks: array });
         }
       }
@@ -538,7 +540,7 @@ class Demo extends React.Component {
     const stoogeSort = async (array: number[], i = 0, j = array.length - 1) => {
       if (array[i] > array[j]) {
         [array[i], array[j]] = [array[j], array[i]];
-        await new Promise(resolve => setTimeout(resolve, 3));
+        await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: array });
       }
       if (j - i + 1 > 2) {
@@ -569,7 +571,7 @@ class Demo extends React.Component {
         for (let i = 0; i < mid; i++) {
           if (up === (array[i] > array[i + mid])) {
             [array[i], array[i + mid]] = [array[i + mid], array[i]];
-            await new Promise(resolve => setTimeout(resolve, 3));
+            await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
             this.setState({ sticks: array });
           }
         }
@@ -595,7 +597,7 @@ class Demo extends React.Component {
       for (let count = 0; count < size; count++) {
         while (holes[count]-- > 0) {
           array[i++] = count + min;
-          await new Promise(resolve => setTimeout(resolve, 3));
+          await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
           this.setState({ sticks: array });
         }
       }
@@ -614,7 +616,7 @@ class Demo extends React.Component {
           if (array[i] > array[i + 1]) {
             [array[i], array[i + 1]] = [array[i + 1], array[i]];
             sorted = false;
-            await new Promise(resolve => setTimeout(resolve, 3));
+            await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
             this.setState({ sticks: array });
           }
         }
@@ -622,7 +624,7 @@ class Demo extends React.Component {
           if (array[i] > array[i + 1]) {
             [array[i], array[i + 1]] = [array[i + 1], array[i]];
             sorted = false;
-            await new Promise(resolve => setTimeout(resolve, 3));
+            await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
             this.setState({ sticks: array });
           }
         }
@@ -644,7 +646,7 @@ class Demo extends React.Component {
           if (array[i] > array[i + 1]) {
             [array[i], array[i + 1]] = [array[i + 1], array[i]];
             swapped = true;
-            await new Promise(resolve => setTimeout(resolve, 3));
+            await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
             this.setState({ sticks: array });
           }
         }
@@ -657,7 +659,7 @@ class Demo extends React.Component {
           if (array[i] > array[i + 1]) {
             [array[i], array[i + 1]] = [array[i + 1], array[i]];
             swapped = true;
-            await new Promise(resolve => setTimeout(resolve, 3));
+            await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
             this.setState({ sticks: array });
           }
         }
@@ -673,7 +675,7 @@ class Demo extends React.Component {
     const bogoSort = async (array: number[]) => {
       while (!this.isSorted(array)) {
         this.Shuffle();
-        await new Promise(resolve => setTimeout(resolve, 3));
+        await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: array });
       }
       return array;
@@ -711,7 +713,7 @@ class Demo extends React.Component {
         }
         sorted.push(min);
         array.splice(minIndex, 1);
-        await new Promise(resolve => setTimeout(resolve, 3));
+        await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: sorted });
       }
       return sorted;
@@ -760,6 +762,11 @@ class Demo extends React.Component {
               <div className="StickCountChangerComponents displayer">{this.state.stick_count}回</div>
               <img onClick={() => {this.update_stick_count(+1)}} src={img_1up} alt="1up" className={((this.state.stick_count + 1 <= 300 && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
               <img onClick={() => {this.update_stick_count(+10)}} src={img_10up} alt="10up" className={((this.state.stick_count + 10 <= 300 && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
+            </div>
+            <div id="IntervalTimeUpdater">
+              <div>処理間隔</div>
+              <input type="range" min="1" max="30" step="1" value={this.state.interval_time} onInput={(e) => {this.setState({ interval_time:  (e.target as HTMLInputElement).value})}} />
+              <div>{this.state.interval_time} ms</div>
             </div>
           </div>
           <div id="DemoBody">

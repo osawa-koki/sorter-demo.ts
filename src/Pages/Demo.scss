@@ -34,6 +34,14 @@
         }
       }
     }
+    #IntervalTimeUpdater {
+      display: flex;
+      margin: 1rem 0;
+      > * {
+        display: block;
+        margin-right: 1rem;
+      }
+    }
   }
   #DemoBody {
     #DemoBodyButtons {
