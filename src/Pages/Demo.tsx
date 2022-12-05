@@ -450,7 +450,7 @@ class Demo extends React.Component {
         let i = 0;
         swapped = false;
         while (i + gap < array.length) {
-          if (this.state.is_resetting) return; // 中断用
+          if (this.state.is_resetting) return array; // 中断用
           if (array[i] > array[i + gap]) {
             [array[i], array[i + gap]] = [array[i + gap], array[i]];
             swapped = true;
