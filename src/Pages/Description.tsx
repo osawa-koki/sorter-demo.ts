@@ -43,7 +43,7 @@ class Description extends React.Component {
   };
 
   update_markdown = (target_option: any) => {
-    const label = target_option.label.replace(/ /g, '_');
+    const label = target_option.label.replace(/ /g, '');
     if (DescriptionData.has(label)) {
       const description = DescriptionData.get(label);
       this.setState({ description: description });
