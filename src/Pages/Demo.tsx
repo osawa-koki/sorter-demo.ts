@@ -54,6 +54,10 @@ class Demo extends React.Component {
     this.setState({ sticks: sticks });
   };
 
+  Sort() {
+
+  }
+
   componentDidMount() {
     this.update_stick_count(0);
   };
@@ -98,8 +102,9 @@ class Demo extends React.Component {
             </div>
           </div>
           <div id="DemoBody">
-            <div id="DemoBodyX___">
-              <Button variant="outline-primary" onClick={this.Shuffle}>シャッフル♪</Button>
+            <div id="DemoBodyButtons">
+              <Button variant="outline-success" onClick={this.Shuffle}>シャッフル♪</Button>
+              <Button variant="outline-primary" onClick={this.Sort}>ソート開始♪</Button>
             </div>
             <div id="DemoCanvas">
               {
