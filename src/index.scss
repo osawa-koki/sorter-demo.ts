@@ -30,24 +30,28 @@ table {
     font-size: 2rem;
     border-left: #{$border_width}px red solid;
     padding-left: #{$border_width * 2}px;
+    margin: 1rem 0;
   }
   h2 {
     $border_width: 5;
     font-size: 1.8rem;
     border-left: #{$border_width}px blue solid;
     padding-left: #{$border_width * 2}px;
+    margin: 1rem 0;
   }
   h3 {
     $border_width: 3;
     font-size: 1.6rem;
     border-left: #{$border_width}px green solid;
     padding-left: #{$border_width * 2}px;
+    margin: 1rem 0;
   }
   h4 {
     $border_width: 1;
     font-size: 1.4rem;
     border-left: #{$border_width}px yellow solid;
     padding-left: #{$border_width * 2}px;
+    margin: 1rem 0;
   }
   table {
     border-collapse: collapse;
@@ -56,5 +60,8 @@ table {
       border: 1px solid gray;
       padding: 0.3rem 0.5rem;
     }
+  }
+  p {
+    margin: 1rem 0;
   }
 }
