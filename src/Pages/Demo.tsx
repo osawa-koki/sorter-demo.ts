@@ -20,6 +20,7 @@ type Props = {
   sticks: number[];
   is_locked: boolean;
   interval_time: number;
+  is_resetting: boolean;
 };
 
 class Demo extends React.Component {
@@ -31,6 +32,7 @@ class Demo extends React.Component {
     sticks: [],
     is_locked: false,
     interval_time: 3,
+    is_resetting: false,
   };
 
   select_changed = (selected_option: any) => {
@@ -66,6 +68,12 @@ class Demo extends React.Component {
     }
     return true;
   }
+
+  async Reset() {
+    this.setState({ is_resetting: true });
+    await new Promise(resolve => setTimeout(resolve, this.state.interval_time * 10));
+    this.setState({ is_resetting: false });
+  };
 
   async Sort() {
     if (this.state.is_locked) {
@@ -151,6 +159,7 @@ class Demo extends React.Component {
     const sticks = this.state.sticks;
     for (let i = 0; i < sticks.length - 1; i++) {
       for (let j = sticks.length - 1; i < j; j--) {
+        if (this.state.is_resetting) return; // 中断用
         if (sticks[j] < sticks[j - 1]) {
           [sticks[j], sticks[j - 1]] = [sticks[j - 1], sticks[j]];
           await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
@@ -166,6 +175,7 @@ class Demo extends React.Component {
       const v = sticks[i];
       let j = i - 1;
       while (j >= 0 && sticks[j] > v) {
+        if (this.state.is_resetting) return; // 中断用
         sticks[j + 1] = sticks[j];
         j--;
         await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
@@ -178,6 +188,7 @@ class Demo extends React.Component {
   async SelectionSort() {
     const sticks = this.state.sticks;
     for (let i = 0; i < sticks.length - 1; i++) {
+      if (this.state.is_resetting) return; // 中断用
       let min = i;
       for (let j = i + 1; j < sticks.length; j++) {
         if (sticks[j] < sticks[min]) {
@@ -199,6 +210,7 @@ class Demo extends React.Component {
       let j = 0;
       const result = [];
       while (i < left.length && j < right.length) {
+        if (this.state.is_resetting) return; // 中断用
         if (left[i] < right[j]) {
           result.push(left[i]);
           i++;
@@ -224,6 +236,7 @@ class Demo extends React.Component {
   };
 
   async QuickSort() {
+    if (this.state.is_resetting) return; // 中断用
     const sticks = this.state.sticks;
     const quickSort = async (array: number[], left: number, right: number) => {
       let index;
@@ -268,6 +281,7 @@ class Demo extends React.Component {
       let size = array.length;
       buildMaxHeap(array);
       while (size > 1) {
+        if (this.state.is_resetting) return; // 中断用
         size--;
         [array[0], array[size]] = [array[size], array[0]];
         await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
@@ -313,6 +327,7 @@ class Demo extends React.Component {
       let j = 0;
       for (let i = min; i <= max; i++) {
         while (countArray[i - min] > 0) {
+          if (this.state.is_resetting) return; // 中断用
           array[j] = i;
           countArray[i - min]--;
           j++;
@@ -331,6 +346,7 @@ class Demo extends React.Component {
       const max = Math.max(...array);
       let divisor = 1;
       while (max / divisor >= 1) {
+        if (this.state.is_resetting) return; // 中断用
         await countingSort(array, divisor);
         divisor *= 10;
       }
@@ -346,8 +362,8 @@ class Demo extends React.Component {
       }
       const sortedArray = new Array(array.length);
       for (let i = array.length - 1; i >= 0; i--) {
-        sortedArray[countArray[Math.floor(array[i] / divisor) % 10] - 1] =
-          array[i];
+        if (this.state.is_resetting) return; // 中断用
+        sortedArray[countArray[Math.floor(array[i] / divisor) % 10] - 1] = array[i];
         countArray[Math.floor(array[i] / divisor) % 10]--;
         await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: sortedArray });
@@ -371,6 +387,7 @@ class Demo extends React.Component {
       for (let i = 0; i < buckets.length; i++) {
         await insertionSort(buckets[i]);
         for (let k = 0; k < buckets[i].length; k++) {
+          if (this.state.is_resetting) return; // 中断用
           array[j] = buckets[i][k];
           j++;
           await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
@@ -405,6 +422,7 @@ class Demo extends React.Component {
           let j = i;
           const temp = array[i];
           while (j >= gap && array[j - gap] > temp) {
+            if (this.state.is_resetting) return; // 中断用
             array[j] = array[j - gap];
             j -= gap;
             await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
@@ -432,6 +450,7 @@ class Demo extends React.Component {
         let i = 0;
         swapped = false;
         while (i + gap < array.length) {
+          if (this.state.is_resetting) return; // 中断用
           if (array[i] > array[i + gap]) {
             [array[i], array[i + gap]] = [array[i + gap], array[i]];
             swapped = true;
@@ -469,6 +488,7 @@ class Demo extends React.Component {
         while (pos !== cycleStart) {
           pos = cycleStart;
           for (let i = cycleStart + 1; i < array.length; i++) {
+            if (this.state.is_resetting) return; // 中断用
             if (array[i] < item) {
               pos++;
             }
@@ -506,6 +526,7 @@ class Demo extends React.Component {
     const flip = async (array: number[], k: number) => {
       let i = 0;
       while (i < k) {
+        if (this.state.is_resetting) return; // 中断用
         [array[i], array[k]] = [array[k], array[i]];
         i++;
         k--;
@@ -521,6 +542,7 @@ class Demo extends React.Component {
     const gnomeSort = async (array: number[]) => {
       let i = 1;
       while (i < array.length) {
+        if (this.state.is_resetting) return; // 中断用
         if (i === 0 || array[i - 1] <= array[i]) {
           i++;
         } else {
@@ -536,6 +558,7 @@ class Demo extends React.Component {
   };
 
   async StoogeSort() {
+    if (this.state.is_resetting) return; // 中断用
     const sticks = this.state.sticks;
     const stoogeSort = async (array: number[], i = 0, j = array.length - 1) => {
       if (array[i] > array[j]) {
@@ -569,6 +592,7 @@ class Demo extends React.Component {
       if (array.length > 1) {
         const mid = Math.floor(array.length / 2);
         for (let i = 0; i < mid; i++) {
+          if (this.state.is_resetting) return; // 中断用
           if (up === (array[i] > array[i + mid])) {
             [array[i], array[i + mid]] = [array[i + mid], array[i]];
             await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
@@ -596,6 +620,7 @@ class Demo extends React.Component {
       let i = 0;
       for (let count = 0; count < size; count++) {
         while (holes[count]-- > 0) {
+          if (this.state.is_resetting) return; // 中断用
           array[i++] = count + min;
           await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
           this.setState({ sticks: array });
@@ -613,6 +638,7 @@ class Demo extends React.Component {
       while (!sorted) {
         sorted = true;
         for (let i = 1; i < array.length - 1; i += 2) {
+          if (this.state.is_resetting) return; // 中断用
           if (array[i] > array[i + 1]) {
             [array[i], array[i + 1]] = [array[i + 1], array[i]];
             sorted = false;
@@ -621,6 +647,7 @@ class Demo extends React.Component {
           }
         }
         for (let i = 0; i < array.length - 1; i += 2) {
+          if (this.state.is_resetting) return; // 中断用
           if (array[i] > array[i + 1]) {
             [array[i], array[i + 1]] = [array[i + 1], array[i]];
             sorted = false;
@@ -643,6 +670,7 @@ class Demo extends React.Component {
       while (swapped) {
         swapped = false;
         for (let i = start; i < end - 1; ++i) {
+          if (this.state.is_resetting) return; // 中断用
           if (array[i] > array[i + 1]) {
             [array[i], array[i + 1]] = [array[i + 1], array[i]];
             swapped = true;
@@ -656,6 +684,7 @@ class Demo extends React.Component {
         swapped = false;
         end--;
         for (let i = end - 1; i >= start; i--) {
+          if (this.state.is_resetting) return; // 中断用
           if (array[i] > array[i + 1]) {
             [array[i], array[i + 1]] = [array[i + 1], array[i]];
             swapped = true;
@@ -674,6 +703,7 @@ class Demo extends React.Component {
     const sticks = this.state.sticks;
     const bogoSort = async (array: number[]) => {
       while (!this.isSorted(array)) {
+        if (this.state.is_resetting) return; // 中断用
         this.Shuffle();
         await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: array });
@@ -688,6 +718,7 @@ class Demo extends React.Component {
     const sleepSort = async (array: number[]) => {
       const sorted: number[] = [];
       for (let i = 0; i < array.length; i++) {
+        if (this.state.is_resetting) return; // 中断用
         setTimeout(() => {
           sorted.push(array[i]);
           this.setState({ sticks: sorted });
@@ -703,6 +734,7 @@ class Demo extends React.Component {
     const strandSort = async (array: number[]) => {
       const sorted: number[] = [];
       while (array.length > 0) {
+        if (this.state.is_resetting) return; // 中断用
         let min = array[0];
         let minIndex = 0;
         for (let i = 1; i < array.length; i++) {
@@ -773,6 +805,9 @@ class Demo extends React.Component {
             <div id="DemoBodyButtons">
               <Button variant="outline-success" onClick={this.Shuffle} disabled={this.state.is_locked}>シャッフル♪</Button>
               <Button variant="outline-primary" onClick={() => {this.Sort()}} disabled={this.state.is_locked}>ソート開始♪</Button>
+              {
+                (this.state.is_locked) ? <Button variant="outline-danger" onClick={() => {this.Reset()}}>リセット</Button> : ""
+              }
             </div>
             <div id="DemoCanvas">
               {
