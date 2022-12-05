@@ -46,7 +46,12 @@ class Demo extends React.Component {
   };
 
   Shuffle = () => {
-    console.log("Shuffle");
+    const sticks = this.state.sticks;
+    for (let i = sticks.length - 1; i > 0; i--) {
+      const r = Math.floor(Math.random() * (i + 1));
+      [sticks[i], sticks[r]] = [sticks[r], sticks[i]];
+    }
+    this.setState({ sticks: sticks });
   };
 
   componentDidMount() {
