@@ -66,6 +66,9 @@ class Demo extends React.Component {
       case "Insertion Sort":
         this.InsertionSort();
         break;
+      case "Merge Sort":
+        this.MergeSort();
+        break;
       default:
         break;
     }
@@ -114,6 +117,37 @@ class Demo extends React.Component {
         this.setState({ sticks: sticks });
       }
     }
+  };
+
+  async MergeSort() {
+    const sticks = this.state.sticks;
+    const merge = async (left: number[], right: number[]) => {
+      let i = 0;
+      let j = 0;
+      const result = [];
+      while (i < left.length && j < right.length) {
+        if (left[i] < right[j]) {
+          result.push(left[i]);
+          i++;
+        } else {
+          result.push(right[j]);
+          j++;
+        }
+        await new Promise(resolve => setTimeout(resolve, 3));
+        this.setState({ sticks: result });
+      }
+      return result.concat(left.slice(i)).concat(right.slice(j));
+    };
+    const mergeSort = async (array: number[]): Promise<any> => {
+      if (array.length <= 1) {
+        return array;
+      }
+      const middle = Math.floor(array.length / 2);
+      const left = array.slice(0, middle);
+      const right = array.slice(middle);
+      return merge(await mergeSort(left), await mergeSort(right));
+    };
+    this.setState({ sticks: await mergeSort(sticks) });
   };
 
   componentDidMount() {
