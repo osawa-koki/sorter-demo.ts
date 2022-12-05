@@ -66,7 +66,7 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     description_ja: "カウントソートは、整数のみを対象とするソートアルゴリズムです。カウントソートは、安定ソートであり、同じ値の要素の順序がソート前後で保たれます。",
   } as SortAlgorithmType,
   {
-    is_valid: true,
+    is_valid: false,
     value: 7,
     label: "Radix Sort",
     label_ja: "基数ソート",
