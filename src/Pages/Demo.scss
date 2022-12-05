@@ -1,0 +1,55 @@
+
+#Demo {
+  margin: 1rem auto;
+  padding: 1rem;
+  max-width: 1000px;
+  #DemoHeader {
+    #DemoAlgorithmSelectBox {
+      max-width: 300px;
+    }
+    #DemoAlgorithmInfoBox {
+      margin: 50px 0;
+    }
+    #StickCountChanger {
+      display: flex;
+      margin: 1rem 0;
+      .StickCountChangerComponents {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 1rem;
+        &.updater {
+          position: relative;
+          border: 1px lightgray solid;
+          width: 50px;
+          cursor: pointer;
+          &:hover {
+            transform: scale(1.01);
+          }
+          &.disabled {
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+  #DemoBody {
+    #DemoBodyButtons {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      button {
+        margin-right: 1rem;
+      }
+    }
+    #DemoCanvas {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      margin: 1rem 0;
+      height: 300px;
+    }
+  }
+}
