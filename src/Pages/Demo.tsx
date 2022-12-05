@@ -738,6 +738,7 @@ class Demo extends React.Component {
         let min = array[0];
         let minIndex = 0;
         for (let i = 1; i < array.length; i++) {
+          await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
           if (array[i] < min) {
             min = array[i];
             minIndex = i;
@@ -745,7 +746,6 @@ class Demo extends React.Component {
         }
         sorted.push(min);
         array.splice(minIndex, 1);
-        await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: sorted });
       }
       return sorted;
