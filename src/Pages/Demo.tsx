@@ -72,6 +72,9 @@ class Demo extends React.Component {
       case "Quick Sort":
         this.QuickSort();
         break;
+      case "Heap Sort":
+        this.HeapSort();
+        break;
       default:
         break;
     }
@@ -190,6 +193,45 @@ class Demo extends React.Component {
       return i;
     };
     this.setState({ sticks: await quickSort(sticks, 0, sticks.length - 1) });
+  };
+
+  async HeapSort() {
+    const sticks = this.state.sticks;
+    const heapSort = async (array: number[]) => {
+      let size = array.length;
+      buildMaxHeap(array);
+      while (size > 1) {
+        size--;
+        [array[0], array[size]] = [array[size], array[0]];
+        await new Promise(resolve => setTimeout(resolve, 3));
+        this.setState({ sticks: array });
+        heapify(array, size, 0);
+      }
+      return array;
+    };
+    const buildMaxHeap = (array: number[]) => {
+      const size = array.length;
+      const middle = Math.floor(size / 2);
+      for (let i = middle; i >= 0; i--) {
+        heapify(array, size, i);
+      }
+    };
+    const heapify = (array: number[], size: number, i: number) => {
+      const left = 2 * i + 1;
+      const right = 2 * i + 2;
+      let largest = i;
+      if (left < size && array[left] > array[largest]) {
+        largest = left;
+      }
+      if (right < size && array[right] > array[largest]) {
+        largest = right;
+      }
+      if (largest !== i) {
+        [array[i], array[largest]] = [array[largest], array[i]];
+        heapify(array, size, largest);
+      }
+    };
+    this.setState({ sticks: await heapSort(sticks) });
   };
 
   componentDidMount() {
