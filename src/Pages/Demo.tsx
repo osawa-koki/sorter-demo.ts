@@ -60,6 +60,9 @@ class Demo extends React.Component {
       case "Bubble Sort":
         this.BubbleSort();
         break;
+      case "Selection Sort":
+        this.SelectionSort();
+        break;
       default:
         break;
     }
@@ -77,6 +80,23 @@ class Demo extends React.Component {
       }
     }
   }
+
+  async SelectionSort() {
+    const sticks = this.state.sticks;
+    for (let i = 0; i < sticks.length - 1; i++) {
+      let min = i;
+      for (let j = i + 1; j < sticks.length; j++) {
+        if (sticks[j] < sticks[min]) {
+          min = j;
+        }
+      }
+      if (min !== i) {
+        [sticks[i], sticks[min]] = [sticks[min], sticks[i]];
+        await new Promise(resolve => setTimeout(resolve, 3));
+        this.setState({ sticks: sticks });
+      }
+    }
+  };
 
   componentDidMount() {
     this.update_stick_count(0);
