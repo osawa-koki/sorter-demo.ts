@@ -99,6 +99,9 @@ class Demo extends React.Component {
       case "Gnome Sort":
         this.GnomeSort();
         break;
+      case "Stooge Sort":
+        this.StoogeSort();
+        break;
       default:
         break;
     }
@@ -490,6 +493,25 @@ class Demo extends React.Component {
       return array;
     };
     this.setState({ sticks: await gnomeSort(sticks) });
+  };
+
+  async StoogeSort() {
+    const sticks = this.state.sticks;
+    const stoogeSort = async (array: number[], i = 0, j = array.length - 1) => {
+      if (array[i] > array[j]) {
+        [array[i], array[j]] = [array[j], array[i]];
+        await new Promise(resolve => setTimeout(resolve, 3));
+        this.setState({ sticks: array });
+      }
+      if (j - i + 1 > 2) {
+        const t = Math.floor((j - i + 1) / 3);
+        await stoogeSort(array, i, j - t);
+        await stoogeSort(array, i + t, j);
+        await stoogeSort(array, i, j - t);
+      }
+      return array;
+    };
+    this.setState({ sticks: await stoogeSort(sticks) });
   };
 
   componentDidMount() {
