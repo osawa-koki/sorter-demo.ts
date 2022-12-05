@@ -75,6 +75,9 @@ class Demo extends React.Component {
       case "Heap Sort":
         this.HeapSort();
         break;
+      case "Counting Sort":
+        this.CountingSort();
+        break;
       default:
         break;
     }
@@ -232,6 +235,30 @@ class Demo extends React.Component {
       }
     };
     this.setState({ sticks: await heapSort(sticks) });
+  };
+
+  async CountingSort() {
+    const sticks = this.state.sticks;
+    const countingSort = async (array: number[]) => {
+      const max = Math.max(...array);
+      const min = Math.min(...array);
+      const countArray = new Array(max - min + 1).fill(0);
+      for (let i = 0; i < array.length; i++) {
+        countArray[array[i] - min]++;
+      }
+      let j = 0;
+      for (let i = min; i <= max; i++) {
+        while (countArray[i - min] > 0) {
+          array[j] = i;
+          countArray[i - min]--;
+          j++;
+          await new Promise(resolve => setTimeout(resolve, 3));
+          this.setState({ sticks: array });
+        }
+      }
+      return array;
+    };
+    this.setState({ sticks: await countingSort(sticks) });
   };
 
   componentDidMount() {
