@@ -108,6 +108,9 @@ class Demo extends React.Component {
       case "Pigeonhole Sort":
         this.PigeonholeSort();
         break;
+      case "Odd-Even Sort":
+        this.OddEvenSort();
+        break;
       default:
         break;
     }
@@ -570,6 +573,34 @@ class Demo extends React.Component {
       return array;
     };
     this.setState({ sticks: await pigeonholeSort(sticks) });
+  };
+
+  async OddEvenSort() {
+    const sticks = this.state.sticks;
+    const oddEvenSort = async (array: number[]) => {
+      let sorted = false;
+      while (!sorted) {
+        sorted = true;
+        for (let i = 1; i < array.length - 1; i += 2) {
+          if (array[i] > array[i + 1]) {
+            [array[i], array[i + 1]] = [array[i + 1], array[i]];
+            sorted = false;
+            await new Promise(resolve => setTimeout(resolve, 3));
+            this.setState({ sticks: array });
+          }
+        }
+        for (let i = 0; i < array.length - 1; i += 2) {
+          if (array[i] > array[i + 1]) {
+            [array[i], array[i + 1]] = [array[i + 1], array[i]];
+            sorted = false;
+            await new Promise(resolve => setTimeout(resolve, 3));
+            this.setState({ sticks: array });
+          }
+        }
+      }
+      return array;
+    };
+    this.setState({ sticks: await oddEvenSort(sticks) });
   };
 
   componentDidMount() {
