@@ -149,9 +149,9 @@ const sorting_algorithms_raw: SortAlgorithmType[] = [
     is_valid: true,
     value: 17,
     label: "Odd-Even Sort",
-    label_ja: "オッド・イブンソート",
+    label_ja: "奇偶転置ソート",
     description: "Odd–even sort, also known as brick sort, is a relatively simple sorting algorithm, developed originally for use on parallel processors with local interconnections. It is a comparison sort related to bubble sort, with which it shares many characteristics.",
-    description_ja: "オッド・イブンソートは、比較ソートの一種で、安定ソートです。",
+    description_ja: "奇偶転置ソートは、比較ソートの一種で、安定ソートです。",
   } as SortAlgorithmType,
   {
     is_valid: true,
