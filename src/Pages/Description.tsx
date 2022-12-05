@@ -5,6 +5,8 @@ import { marked } from 'marked';
 
 import './Description.scss';
 
+import Header from './Header';
+
 import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 import { HttpClient } from '../Common/HttpClient';
 
@@ -67,11 +69,14 @@ class Description extends React.Component {
 
   render() {
     return (
-      <div id="Description">
-        <div id="DescriptionSelectBox">
-          <Select options={readme_added_sort_algorithms} placeholder="SELECT SORTING ALGORITHM" value={this.state.selected_sorting_algorithm} onChange={this.select_changed} />
+      <div>
+        <Header />
+        <div id="Description">
+          <div id="DescriptionSelectBox">
+            <Select options={readme_added_sort_algorithms} placeholder="SELECT SORTING ALGORITHM" value={this.state.selected_sorting_algorithm} onChange={this.select_changed} />
+          </div>
+          <div dangerouslySetInnerHTML={{__html: this.state.description}} className="markdown"></div>
         </div>
-        <div dangerouslySetInnerHTML={{__html: this.state.description}} className="markdown"></div>
       </div>
     );
   };
