@@ -735,10 +735,10 @@ class Demo extends React.Component {
     const strandSort = async (array: number[]) => {
       const sorted: number[] = [];
       while (array.length > 0) {
-        if (this.state.is_resetting) return; // 中断用
         let min = array[0];
         let minIndex = 0;
         for (let i = 1; i < array.length; i++) {
+          if (this.state.is_resetting) return array; // 中断用
           await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
           if (array[i] < min) {
             min = array[i];
