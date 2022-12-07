@@ -704,7 +704,7 @@ class Demo extends React.Component {
     const sticks = this.state.sticks;
     const bogoSort = async (array: number[]) => {
       while (!this.isSorted(array)) {
-        if (this.state.is_resetting) return; // 中断用
+        if (this.state.is_resetting) return array; // 中断用
         this.Shuffle();
         await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
         this.setState({ sticks: array });
