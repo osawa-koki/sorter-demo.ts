@@ -719,7 +719,7 @@ class Demo extends React.Component {
     const sleepSort = async (array: number[]) => {
       const sorted: number[] = [];
       for (let i = 0; i < array.length; i++) {
-        if (this.state.is_resetting) return; // 中断用
+        if (this.state.is_resetting) return array; // 中断用
         setTimeout(() => {
           sorted.push(array[i]);
           this.setState({ sticks: sorted });
