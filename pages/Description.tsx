@@ -3,8 +3,6 @@ import Select from 'react-select';
 
 import { marked } from 'marked';
 
-import './Description.scss';
-
 import Header from './Header';
 
 import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';

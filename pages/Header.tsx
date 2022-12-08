@@ -2,8 +2,6 @@
 import React from 'react';
 import Link from 'next/link';
 
-// import "./Header.scss";
-
 function Header() {
   return (
     <div id="Header">
