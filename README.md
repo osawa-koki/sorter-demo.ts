@@ -1,6 +1,6 @@
 # sorter-demo.ts
 
-整列アルゴリズムをデモンストレーションサイト。  
+整列アルゴリズムのデモンストレーションサイト。  
 
 ![BubbleSort](./.development/img/BubbleSort.gif)  
 
