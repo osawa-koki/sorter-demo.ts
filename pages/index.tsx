@@ -1,13 +1,23 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import Link from 'next/link';
+import Image from 'next/image';
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">About</Link>
-    </p>
-  </Layout>
-)
+import Settings from '../Common/Settings';
 
-export default IndexPage
+import description_img from '../Assets/description.png';
+import demo_img from '../Assets/demo.png';
+// import './Root.scss';
+
+function Root() {
+  return (
+    <div id="Root">
+      <Link className='RootImg' href={`${Settings.ROOT_PATH}/description`}>
+        <Image src={description_img} alt="description" />
+      </Link>
+      <Link className='RootImg' href={`${Settings.ROOT_PATH}/demo`}>
+        <Image src={demo_img} alt="demo" />
+      </Link>
+    </div>
+  );
+}
+
+export default Root;

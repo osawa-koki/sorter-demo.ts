@@ -1,0 +1,20 @@
+
+#Header {
+  #Header-header {
+    display: flex;
+    max-width: 1500px;
+    padding: 1rem;
+    margin: 1rem auto;
+    a {
+      display: block;
+      border-right: 1px lightgray solid;
+      padding-right: 1rem;
+      margin-right: 1rem;
+      color: blue;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
