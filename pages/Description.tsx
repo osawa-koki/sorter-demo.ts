@@ -3,7 +3,7 @@ import Select from 'react-select';
 
 import { marked } from 'marked';
 
-import Header from './Header';
+import Header from './header';
 
 import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 import { HttpClient } from '../Common/HttpClient';

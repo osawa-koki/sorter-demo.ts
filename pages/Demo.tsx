@@ -4,7 +4,7 @@ import Select from 'react-select';
 
 import Button from 'react-bootstrap/Button';
 
-import Header from './Header';
+import Header from './header';
 
 import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 
