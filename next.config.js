@@ -5,5 +5,6 @@ const SUB_DIRECTORY = "/sorter-demo.ts";
 const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
-  assetPrefix: isProd ? SUB_DIRECTORY : "",
+  // assetPrefix: isProd ? SUB_DIRECTORY : "",
+  assetPrefix: SUB_DIRECTORY,
 };
