@@ -6,9 +6,9 @@ function Header() {
   return (
     <div id="Header">
       <header id="Header-header">
-        <Link href="/sorter-demo.ts">Home</Link>
-        <Link href="/sorter-demo.ts/description">Description</Link>
-        <Link href="/sorter-demo.ts/demo">Demo</Link>
+        <Link href="/">Home</Link>
+        <Link href="/description">Description</Link>
+        <Link href="/demo">Demo</Link>
       </header>
     </div>
   );
