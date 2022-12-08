@@ -5,9 +5,8 @@ import Settings from '../Common/Settings';
 
 import description_img from '../Assets/description.png';
 import demo_img from '../Assets/demo.png';
-// import './Root.scss';
 
-function Root() {
+function Index() {
   return (
     <div id="Root">
       <Link className='RootImg' href={`${Settings.ROOT_PATH}/description`}>
@@ -20,4 +19,4 @@ function Root() {
   );
 }
 
-export default Root;
+export default Index;

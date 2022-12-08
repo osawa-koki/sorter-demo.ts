@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 
 import Header from './Header';
 
-import './Demo.scss';
+// import './Demo.scss';
 import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 
 import img_1up from '../Assets/1up.png';
