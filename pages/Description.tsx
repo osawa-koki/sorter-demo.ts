@@ -4,6 +4,7 @@ import Select from 'react-select';
 import { marked } from 'marked';
 
 import Header from './header';
+import Layout from '../components/Layout';
 
 import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 import { HttpClient } from '../Common/HttpClient';
@@ -67,7 +68,7 @@ class Description extends React.Component {
 
   render() {
     return (
-      <div>
+      <Layout title="sorter-demo.ts">
         <Header />
         <div id="Description">
           <div id="DescriptionSelectBox">
@@ -75,7 +76,7 @@ class Description extends React.Component {
           </div>
           <div dangerouslySetInnerHTML={{__html: this.state.description}} className="markdown"></div>
         </div>
-      </div>
+      </Layout>
     );
   };
 }

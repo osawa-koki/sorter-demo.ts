@@ -1,10 +1,10 @@
-import Image from 'next/image';
 import React from 'react';
 import Select from 'react-select';
 
 import Button from 'react-bootstrap/Button';
 
 import Header from './header';
+import Layout from '../components/Layout';
 
 import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 
@@ -760,7 +760,7 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <div>
+      <Layout title="sorter-demo.ts">
         <Header />
         <div id="Demo">
           <div id="DemoHeader">
@@ -819,7 +819,7 @@ class Demo extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </Layout>
     );
   };
 }
