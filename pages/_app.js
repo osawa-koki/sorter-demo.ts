@@ -1,9 +1,9 @@
 import './index.scss';
 
-import "./Header.scss";
+import "./header.scss";
 
-import './Description.scss';
-import './Demo.scss';
+import './description.scss';
+import './demo.scss';
 
 export default function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
