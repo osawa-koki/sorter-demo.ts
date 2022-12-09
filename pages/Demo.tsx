@@ -768,7 +768,7 @@ class Demo extends React.Component {
         <div id="Demo">
           <div id="DemoHeader">
             <div id="DemoAlgorithmSelectBox">
-              <Select options={this.state.sorting_algorithm} placeholder="SELECT SORTING ALGORITHM" value={this.state.selected_sorting_algorithm} onChange={this.select_changed} isDisabled={this.state.is_locked} />
+              <Select id="selectbox" instanceId="selectbox" options={this.state.sorting_algorithm} placeholder="SELECT SORTING ALGORITHM" value={this.state.selected_sorting_algorithm} onChange={this.select_changed} isDisabled={this.state.is_locked} />
             </div>
             <div id="DemoAlgorithmInfoBox">
               <table>
