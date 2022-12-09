@@ -2,7 +2,7 @@
 
 整列アルゴリズムのデモンストレーションサイト。  
 
-![ソートアルゴリズム](./.development/img/BubbleSort.gif)  
+![BubbleSort](./.development/img/BubbleSort.gif)  
 
 ## 自分用メモ
 
