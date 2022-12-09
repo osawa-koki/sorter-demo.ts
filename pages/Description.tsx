@@ -58,7 +58,7 @@ class Description extends React.Component {
       history.pushState('', '', `${location.href.replace(/\?.*/, '')})}`);
     }
     else {
-      this.setState({ page_title: `${selected_option.label_ja} - sorter-demo.ts` });
+      this.setState({ page_title: `${selected_option.label_ja} - sorter-demo.ts(description)` });
       history.pushState('', '', `${location.href.replace(/\?.*/, '')}?${selected_option.label.replace(/ /g, '')}`);
     }
   };

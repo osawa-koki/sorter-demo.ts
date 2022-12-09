@@ -41,6 +41,8 @@ class Demo extends React.Component {
     this.setState({ selected_sorting_algorithm: selected_option });
     // URIの更新
     history.pushState('', '', `${location.href.replace(/\?.*/, '')}?${selected_option.label.replace(/ /g, '')}`);
+    // ページタイトルの更新
+    this.setState({ page_title: `${selected_option.label} - sorer-demo.ts(demo)` });
   };
 
   update_stick_count = (operant: number) => {
