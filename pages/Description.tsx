@@ -4,14 +4,17 @@ import Select from 'react-select';
 import { marked } from 'marked';
 
 import Header from './header';
+import Layout from '../components/Layout';
 
 import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 import { HttpClient } from '../Common/HttpClient';
+import Settings from '../Common/Settings';
 
 type Props = {
   description: string;
   sorting_algorithm: SortAlgorithmType[];
   selected_sorting_algorithm: SortAlgorithmType;
+  page_title: string;
 };
 
 const readme_added_sort_algorithms = [{
@@ -30,14 +33,34 @@ class Description extends React.Component {
     description: '',
     sorting_algorithm: readme_added_sort_algorithms,
     selected_sorting_algorithm: readme_added_sort_algorithms[0],
+    page_title: 'sorter-demo.ts',
   };
 
   componentDidMount() {
     this.update_markdown(this.state.selected_sorting_algorithm);
-  }
+    // クエリパラメータから選択状態を復元
+    const query = location.search.replace(/^\?/, '');
+    if (query !== '') {
+      const selected_option = this.state.sorting_algorithm.find((option) => {
+        return option.label.replace(/ /g, '') === query;
+      });
+      if (selected_option) {
+        this.select_changed(selected_option);
+      }
+    }
+  };
 
   select_changed = (selected_option: any) => {
     this.update_markdown(selected_option);
+    // タイトルの更新
+    if (selected_option.label === "README") {
+      this.setState({ page_title: Settings.PAGE_DEFAULT_TITLE });
+      history.pushState('', '', `${location.href.replace(/\?.*/, '')})}`);
+    }
+    else {
+      this.setState({ page_title: `${selected_option.label_ja} - ${Settings.PAGE_DEFAULT_TITLE}(description)` });
+      history.pushState('', '', `${location.href.replace(/\?.*/, '')}?${selected_option.label.replace(/ /g, '')}`);
+    }
   };
 
   update_markdown = (target_option: any) => {
@@ -63,11 +86,11 @@ class Description extends React.Component {
         selected_sorting_algorithm: target_option,
       });
     });
-  }
+  };
 
   render() {
     return (
-      <div>
+      <Layout title={this.state.page_title}>
         <Header />
         <div id="Description">
           <div id="DescriptionSelectBox">
@@ -75,9 +98,9 @@ class Description extends React.Component {
           </div>
           <div dangerouslySetInnerHTML={{__html: this.state.description}} className="markdown"></div>
         </div>
-      </div>
+      </Layout>
     );
   };
-}
+};
 
 export default Description;

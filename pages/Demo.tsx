@@ -1,10 +1,10 @@
-import Image from 'next/image';
 import React from 'react';
 import Select from 'react-select';
 
 import Button from 'react-bootstrap/Button';
 
 import Header from './header';
+import Layout from '../components/Layout';
 
 import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 
@@ -21,6 +21,7 @@ type Props = {
   is_locked: boolean;
   interval_time: number;
   is_resetting: boolean;
+  page_title: string;
 };
 
 class Demo extends React.Component {
@@ -33,10 +34,15 @@ class Demo extends React.Component {
     is_locked: false,
     interval_time: 3,
     is_resetting: false,
+    page_title: Settings.PAGE_DEFAULT_TITLE,
   };
 
   select_changed = (selected_option: any) => {
     this.setState({ selected_sorting_algorithm: selected_option });
+    // URIの更新
+    history.pushState('', '', `${location.href.replace(/\?.*/, '')}?${selected_option.label.replace(/ /g, '')}`);
+    // ページタイトルの更新
+    this.setState({ page_title: `${selected_option.label} - ${Settings.PAGE_DEFAULT_TITLE}(demo)` });
   };
 
   update_stick_count = (operant: number) => {
@@ -756,11 +762,21 @@ class Demo extends React.Component {
 
   componentDidMount() {
     this.update_stick_count(0);
+    // URIから状態を復元
+    const query = location.search.replace(/^\?/, '');
+    if (query !== '') {
+      const selected_option = this.state.sorting_algorithm.find((option) => {
+        return option.label.replace(/ /g, '') === query;
+      });
+      if (selected_option) {
+        this.select_changed(selected_option);
+      }
+    }
   };
 
   render() {
     return (
-      <div>
+      <Layout title={this.state.page_title}>
         <Header />
         <div id="Demo">
           <div id="DemoHeader">
@@ -819,7 +835,7 @@ class Demo extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </Layout>
     );
   };
 }
