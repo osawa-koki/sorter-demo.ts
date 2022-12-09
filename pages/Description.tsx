@@ -38,6 +38,16 @@ class Description extends React.Component {
 
   componentDidMount() {
     this.update_markdown(this.state.selected_sorting_algorithm);
+    // クエリパラメータから選択状態を復元
+    const query = location.search.replace(/^\?/, '');
+    if (query !== '') {
+      const selected_option = this.state.sorting_algorithm.find((option) => {
+        return option.label.replace(/ /g, '') === query;
+      });
+      if (selected_option) {
+        this.select_changed(selected_option);
+      }
+    }
   }
 
   select_changed = (selected_option: any) => {
