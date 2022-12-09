@@ -6,7 +6,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
   // assetPrefix: isProd ? SUB_DIRECTORY : "",
-  basePath: SUB_DIRECTORY,
+  assetPrefix: SUB_DIRECTORY,
 };
 
 const withExportImages = require('next-export-optimize-images')
