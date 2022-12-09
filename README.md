@@ -18,3 +18,4 @@ Image/NextはNodeモジュールを使用したサーバ機能であるため、
 ## 参考文献
 
 - [React(TypeScript)の導入](https://create-react-app.dev/docs/adding-typescript/)
+- [(Next)クラメソ](https://dev.classmethod.jp/articles/introduction-to-nextjs/)
