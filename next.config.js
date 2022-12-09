@@ -4,13 +4,12 @@ const SUB_DIRECTORY = "/sorter-demo.ts";
 /* 本番環境と開発環境の分岐用のフラグ */
 const isProd = process.env.NODE_ENV === "production";
 
-module.exports = {
-  // assetPrefix: isProd ? SUB_DIRECTORY : "",
-  basePath: SUB_DIRECTORY,
-};
-
 const withExportImages = require('next-export-optimize-images')
 
 module.exports = withExportImages({
-  // write your next.js configuration values.
+  basePath: isProd ? SUB_DIRECTORY : "",
+  assetPrefix: isProd ? SUB_DIRECTORY : "",
+  publicRuntimeConfig: {
+    basePath: isProd ? SUB_DIRECTORY : "",
+  },
 });
