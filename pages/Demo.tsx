@@ -412,6 +412,7 @@ class Demo extends React.Component {
         let j = i - 1;
         const temp = array[i];
         while (j >= 0 && array[j] > temp) {
+          if (this.state.is_resetting) return array; // 中断用
           array[j + 1] = array[j];
           j--;
           await new Promise(resolve => setTimeout(resolve, this.state.interval_time));
