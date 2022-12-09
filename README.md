@@ -6,18 +6,10 @@
 
 ## 自分用メモ
 
-```shell
-# Reactアプリの作成
-yarn create react-app <プロジェクト名> --template typescript
+### Image/NextはSSGサポートしていない
 
-# 「create-react-app」は非推奨
-# If you've previously installed create-react-app globally via npm install -g create-react-app, we recommend you uninstall the package using npm uninstall -g create-react-app or yarn global remove create-react-app to ensure that npx always uses the latest version.
-
-# Global installs of create-react-app are no longer supported.
-
-# scssのインストール
-yarn add node-sass
-```
+Image/NextはNodeモジュールを使用したサーバ機能であるため、SSGには使用できない。  
+一応、[next-export-optimize-images](https://github.com/dc7290/next-export-optimize-images)を使用して無理やり使用することもできるが、諸設定がかなり複雑になるため、ここでは使用しない。  
 
 ## その他イロイロ
 
@@ -26,3 +18,4 @@ yarn add node-sass
 ## 参考文献
 
 - [React(TypeScript)の導入](https://create-react-app.dev/docs/adding-typescript/)
+- [(Next)クラメソ](https://dev.classmethod.jp/articles/introduction-to-nextjs/)
