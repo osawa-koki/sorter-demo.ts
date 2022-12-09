@@ -42,7 +42,11 @@ class Demo extends React.Component {
     // URIの更新
     history.pushState('', '', `${location.href.replace(/\?.*/, '')}?${selected_option.label.replace(/ /g, '')}`);
     // ページタイトルの更新
-    this.setState({ page_title: `${selected_option.label} - ${Settings.PAGE_DEFAULT_TITLE}(demo)` });
+    this.update_page_title(selected_option.label);
+  };
+
+  update_page_title = (title: string) => {
+    this.setState({ page_title: `${title} - ${Settings.PAGE_DEFAULT_TITLE}(demo)` });
   };
 
   update_stick_count = (operant: number) => {
@@ -772,6 +776,8 @@ class Demo extends React.Component {
         this.select_changed(selected_option);
       }
     }
+    // ページタイトルの更新
+    this.update_page_title(this.state.selected_sorting_algorithm.label);
   };
 
   render() {
