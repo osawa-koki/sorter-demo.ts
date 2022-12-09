@@ -48,7 +48,7 @@ class Description extends React.Component {
         this.select_changed(selected_option);
       }
     }
-  }
+  };
 
   select_changed = (selected_option: any) => {
     this.update_markdown(selected_option);
@@ -86,7 +86,7 @@ class Description extends React.Component {
         selected_sorting_algorithm: target_option,
       });
     });
-  }
+  };
 
   render() {
     return (
@@ -101,6 +101,6 @@ class Description extends React.Component {
       </Layout>
     );
   };
-}
+};
 
 export default Description;
