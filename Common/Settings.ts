@@ -1,6 +1,6 @@
 
 const Settings = {
-  ROOT_PATH: "",
+  ROOT_PATH: "/sorter-demo.ts",
 };
 
 export default Settings;
