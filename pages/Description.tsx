@@ -54,11 +54,11 @@ class Description extends React.Component {
     this.update_markdown(selected_option);
     // タイトルの更新
     if (selected_option.label === "README") {
-      this.setState({ page_title: 'sorter-demo.ts' });
+      this.setState({ page_title: Settings.PAGE_DEFAULT_TITLE });
       history.pushState('', '', `${location.href.replace(/\?.*/, '')})}`);
     }
     else {
-      this.setState({ page_title: `${selected_option.label_ja} - sorter-demo.ts(description)` });
+      this.setState({ page_title: `${selected_option.label_ja} - ${Settings.PAGE_DEFAULT_TITLE}(description)` });
       history.pushState('', '', `${location.href.replace(/\?.*/, '')}?${selected_option.label.replace(/ /g, '')}`);
     }
   };

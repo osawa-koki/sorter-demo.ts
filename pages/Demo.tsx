@@ -34,7 +34,7 @@ class Demo extends React.Component {
     is_locked: false,
     interval_time: 3,
     is_resetting: false,
-    page_title: 'sorter-demo.ts',
+    page_title: Settings.PAGE_DEFAULT_TITLE,
   };
 
   select_changed = (selected_option: any) => {
@@ -42,7 +42,7 @@ class Demo extends React.Component {
     // URIの更新
     history.pushState('', '', `${location.href.replace(/\?.*/, '')}?${selected_option.label.replace(/ /g, '')}`);
     // ページタイトルの更新
-    this.setState({ page_title: `${selected_option.label} - sorer-demo.ts(demo)` });
+    this.setState({ page_title: `${selected_option.label} - ${Settings.PAGE_DEFAULT_TITLE}(demo)` });
   };
 
   update_stick_count = (operant: number) => {
