@@ -8,3 +8,9 @@ module.exports = {
   // assetPrefix: isProd ? SUB_DIRECTORY : "",
   basePath: SUB_DIRECTORY,
 };
+
+const withExportImages = require('next-export-optimize-images')
+
+module.exports = withExportImages({
+  // write your next.js configuration values.
+});
