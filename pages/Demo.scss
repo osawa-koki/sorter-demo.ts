@@ -9,6 +9,13 @@
     }
     #DemoAlgorithmInfoBox {
       margin: 50px 0;
+      table {
+        border-collapse: collapse;
+        th, td {
+          border: 1px solid gray;
+          padding: 0.2rem 0.5rem;
+        }
+      }
     }
     #StickCountChanger {
       display: flex;
