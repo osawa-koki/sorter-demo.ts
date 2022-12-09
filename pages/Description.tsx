@@ -8,11 +8,13 @@ import Layout from '../components/Layout';
 
 import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 import { HttpClient } from '../Common/HttpClient';
+import Settings from '../Common/Settings';
 
 type Props = {
   description: string;
   sorting_algorithm: SortAlgorithmType[];
   selected_sorting_algorithm: SortAlgorithmType;
+  page_title: string;
 };
 
 const readme_added_sort_algorithms = [{
@@ -31,6 +33,7 @@ class Description extends React.Component {
     description: '',
     sorting_algorithm: readme_added_sort_algorithms,
     selected_sorting_algorithm: readme_added_sort_algorithms[0],
+    page_title: 'sorter-demo.ts',
   };
 
   componentDidMount() {
@@ -39,6 +42,15 @@ class Description extends React.Component {
 
   select_changed = (selected_option: any) => {
     this.update_markdown(selected_option);
+    // タイトルの更新
+    if (selected_option.label === "README") {
+      this.setState({ page_title: 'sorter-demo.ts' });
+      history.pushState('', '', `${location.href.replace(/\?.*/, '')})}`);
+    }
+    else {
+      this.setState({ page_title: `${selected_option.label_ja} - sorter-demo.ts` });
+      history.pushState('', '', `${location.href.replace(/\?.*/, '')}?${selected_option.label.replace(/ /g, '')}`);
+    }
   };
 
   update_markdown = (target_option: any) => {
@@ -68,7 +80,7 @@ class Description extends React.Component {
 
   render() {
     return (
-      <Layout title="sorter-demo.ts">
+      <Layout title={this.state.page_title}>
         <Header />
         <div id="Description">
           <div id="DescriptionSelectBox">
