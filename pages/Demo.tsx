@@ -8,10 +8,7 @@ import Header from './header';
 
 import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
 
-import img_1up from '../Assets/1up.png';
-import img_1down from '../Assets/1down.png';
-import img_10up from '../Assets/10up.png';
-import img_10down from '../Assets/10down.png';
+import Settings from '../Common/Settings';
 
 const stick_count_min = 30;
 const stick_count_max = 500;
@@ -793,11 +790,11 @@ class Demo extends React.Component {
               </table>
             </div>
             <div id="StickCountChanger">
-              <Image onClick={() => {this.update_stick_count(-10)}} src={img_10down} alt="1down" className={((stick_count_min <= this.state.stick_count - 10 && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
-              <Image onClick={() => {this.update_stick_count(-1)}} src={img_1down} alt="10down" className={((stick_count_min <= this.state.stick_count - 1 && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
+              <img onClick={() => {this.update_stick_count(-10)}} src={`${Settings.ROOT_PATH}/img_1down.png`} alt="1down" className={((stick_count_min <= this.state.stick_count - 10 && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
+              <img onClick={() => {this.update_stick_count(-1)}} src={`${Settings.ROOT_PATH}/img_10down.png`} alt="10down" className={((stick_count_min <= this.state.stick_count - 1 && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
               <div className="StickCountChangerComponents displayer">{this.state.stick_count}回</div>
-              <Image onClick={() => {this.update_stick_count(+1)}} src={img_1up} alt="1up" className={((this.state.stick_count + 1 <= stick_count_max && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
-              <Image onClick={() => {this.update_stick_count(+10)}} src={img_10up} alt="10up" className={((this.state.stick_count + 10 <= stick_count_max && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
+              <img onClick={() => {this.update_stick_count(+1)}} src={`${Settings.ROOT_PATH}/img_1up.png`} alt="1up" className={((this.state.stick_count + 1 <= stick_count_max && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
+              <img onClick={() => {this.update_stick_count(+10)}} src={`${Settings.ROOT_PATH}/img_10up.png`} alt="10up" className={((this.state.stick_count + 10 <= stick_count_max && !this.state.is_locked) ? "" : "disabled") + " StickCountChangerComponents updater"} />
             </div>
             <div id="IntervalTimeUpdater">
               <div>処理間隔</div>
