@@ -21,6 +21,7 @@ type Props = {
   is_locked: boolean;
   interval_time: number;
   is_resetting: boolean;
+  page_title: string;
 };
 
 class Demo extends React.Component {
@@ -33,10 +34,13 @@ class Demo extends React.Component {
     is_locked: false,
     interval_time: 3,
     is_resetting: false,
+    page_title: 'sorter-demo.ts',
   };
 
   select_changed = (selected_option: any) => {
     this.setState({ selected_sorting_algorithm: selected_option });
+    // URIの更新
+    history.pushState('', '', `${location.href.replace(/\?.*/, '')}?${selected_option.label.replace(/ /g, '')}`);
   };
 
   update_stick_count = (operant: number) => {
@@ -756,11 +760,21 @@ class Demo extends React.Component {
 
   componentDidMount() {
     this.update_stick_count(0);
+    // URIから状態を復元
+    const query = location.search.replace(/^\?/, '');
+    if (query !== '') {
+      const selected_option = this.state.sorting_algorithm.find((option) => {
+        return option.label.replace(/ /g, '') === query;
+      });
+      if (selected_option) {
+        this.select_changed(selected_option);
+      }
+    }
   };
 
   render() {
     return (
-      <Layout title="sorter-demo.ts">
+      <Layout title={this.state.page_title}>
         <Header />
         <div id="Demo">
           <div id="DemoHeader">
