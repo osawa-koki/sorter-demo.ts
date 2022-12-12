@@ -4,6 +4,36 @@
 
 ![BubbleSort](./.development/img/BubbleSort.gif)  
 
+## 実行方法
+
+```shell
+# デバグ実行
+yarn dev
+
+# デプロイ用ビルド
+yarn build
+```
+
+## ディレクトリ構成
+
+```dir
+- .development (開発者用情報)
+- .next (Nextが使用するファイル群)
+- Common (各プログラムで共有して使用するモジュール)
+- components (部品系)
+- node_modules (ノードモジュール)
+- docs (ビルド後ファイル群出力先 | デプロイ対象)
+- pages (ページ)
+- public (公開ページ)
+```
+
+## 開発環境
+
+| module | version |
+| ---- | ---- |
+| Windows | 11 Home |
+| Node | 16.18.0 |
+
 ## 自分用メモ
 
 ### Image/NextはSSGサポートしていない
