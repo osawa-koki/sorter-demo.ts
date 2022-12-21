@@ -3,12 +3,12 @@ import Select from 'react-select';
 
 import { marked } from 'marked';
 
-import Header from './header';
+import Header from './Header';
 import Layout from '../components/Layout';
 
-import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
-import { HttpClient } from '../Common/HttpClient';
-import Settings from '../Common/Settings';
+import { sorting_algorithms, SortAlgorithmType } from '../common/SortAlgorithm';
+import { HttpClient } from '../common/HttpClient';
+import Settings from '../common/Settings';
 
 type Props = {
   description: string;

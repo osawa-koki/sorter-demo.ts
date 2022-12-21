@@ -3,12 +3,12 @@ import Select from 'react-select';
 
 import Button from 'react-bootstrap/Button';
 
-import Header from './header';
+import Header from './Header';
 import Layout from '../components/Layout';
 
-import { sorting_algorithms, SortAlgorithmType } from '../Common/SortAlgorithm';
+import { sorting_algorithms, SortAlgorithmType } from '../common/SortAlgorithm';
 
-import Settings from '../Common/Settings';
+import Settings from '../common/Settings';
 
 const stick_count_min = 30;
 const stick_count_max = 500;
