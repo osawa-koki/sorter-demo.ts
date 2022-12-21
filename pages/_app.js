@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.scss';
 
-import './header.scss';
+import '../components/header.scss';
 
 import './description.scss';
 import './demo.scss';
