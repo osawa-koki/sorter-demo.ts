@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import Layout from '../components/Layout'
 
-import Settings from '../Common/Settings';
+import Settings from '../common/Settings';
 
 function Index() {
   return (

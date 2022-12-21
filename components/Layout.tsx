@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import Head from 'next/head'
-import Settings from '../Common/Settings'
+import Settings from '../common/Settings'
 
 type Props = {
   children?: ReactNode
