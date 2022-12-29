@@ -32,7 +32,7 @@ yarn build
 | module | version |
 | ---- | ---- |
 | Windows | 11 Home |
-| Node | 16.18.0 |
+| Node | v19.3.0 |
 
 ## 自分用メモ
 
