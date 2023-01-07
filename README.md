@@ -2,11 +2,14 @@
 
 整列アルゴリズムのデモンストレーションサイト。  
 
-![BubbleSort](./.development/img/BubbleSort.gif)  
+![成果物](./.development/img/fruit.gif)  
 
 ## 実行方法
 
 ```shell
+# モジュールのインストール
+yarn
+
 # デバグ実行
 yarn dev
 
@@ -19,10 +22,9 @@ yarn build
 ```dir
 - .development (開発者用情報)
 - .next (Nextが使用するファイル群)
-- Common (各プログラムで共有して使用するモジュール)
+- common (各プログラムで共有して使用するモジュール)
 - components (部品系)
 - node_modules (ノードモジュール)
-- docs (ビルド後ファイル群出力先 | デプロイ対象)
 - pages (ページ)
 - public (公開ページ)
 ```
